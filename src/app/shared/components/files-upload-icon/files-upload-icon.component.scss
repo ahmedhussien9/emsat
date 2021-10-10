@@ -1,0 +1,36 @@
+@import "~src/assets/scss/variables.scss";
+
+.upload-multiple-files {
+    &__inputContainer {
+        position: relative;
+        cursor: pointer;
+        .btn {
+            border-radius: 50px !important;
+            color: #ccc;
+            font-weight: normal;
+            transition: all 0.5s ease-in-out;
+            width: 100%;
+            mat-icon {
+                color: $mainColor;
+                cursor: pointer;
+            }
+            &:focus {
+                outline: none;
+                box-shadow: 0;
+            }
+            [dir="rtl"] & {
+                margin-right: auto;
+                margin-left: initial;
+            }
+        }
+        input[type="file"] {
+            position: absolute;
+            width: 100%;
+            overflow: hidden;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
+}

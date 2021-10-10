@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <div class="wrapper__header">
+        <h1 class="main-title">Recommeneded Exams For you!</h1>
+    </div>
+    <ng-container *ngIf="loading">
+        <app-loader></app-loader>
+    </ng-container>
+
+    <div class="body">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let exam of exam$ | async">
+                <app-single-exam [exam]="exam" (isApplyExam)="apply(exam)">
+
+                </app-single-exam>
+            </div>
+        </div>
+    </div>
+</div>

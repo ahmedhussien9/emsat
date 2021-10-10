@@ -1,0 +1,116 @@
+.reports {
+    padding: 2rem;
+    min-height: 100vh;
+    .card-containers {
+        display: flex;
+        gap: 15px;
+        .report-card {
+            flex: 1 1 20%;
+            padding: 1rem 0.5rem;
+            color: #fff;
+            border-radius: 3px;
+            background-color: #fc5296;
+            border: 0px;
+            background-image: linear-gradient(315deg, #fc5296 0%, #f67062 74%);
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            &__value {
+                flex-grow: 1;
+                h1 {
+                    font-size: 1.8rem;
+                }
+            }
+            &__icon {
+                color: #000;
+                width: 80px;
+                height: 80px;
+                line-height: 80px;
+                background: #fff;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 40px;
+            }
+            &:nth-of-type(1) {
+                background-color: #f8ceec;
+                background-image: linear-gradient(315deg, #f8ceec 0%, #a88beb 74%);
+            }
+
+            &:nth-of-type(3) {
+                background-color: #7f53ac;
+                background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+            }
+            &:nth-of-type(4) {
+                background-color: #f39f86;
+                background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%);
+            }
+        }
+    }
+
+    //welcome section
+    .welcome-container {
+        padding: 1rem;
+        border: 1px solid #f1f1f1;
+        background: #fff;
+        margin-bottom: 2rem 0rem;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .image {
+            width: 15%;
+            img {
+            }
+        }
+        .user-name {
+            width: 80%;
+            flex-grow: 1;
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+}
+
+.charts-container {
+    display: flex;
+    gap: 15px;
+    margin: 2rem 0rem;
+    .charts {
+        flex-grow: 1;
+        position: relative;
+        width: 70%;
+        .line-chart {
+            background: #fff;
+        }
+        .bar-chart {
+            background: #fff;
+            margin-top: 1rem;
+        }
+    }
+    .line-chart {
+    }
+    .dounts-chart {
+        background: #fff;
+        width: 30%;
+        position: relative;
+        padding: 1rem 0.5rem;
+        .item-card {
+            align-items: center;
+            display: flex;
+            border: 1px solid #f1f1f1;
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin: 1rem 0rem;
+            .item-card-info {
+                flex-grow: 1;
+                h6 {
+                    font-weight: bold;
+                }
+            }
+        }
+        .item-card-image {
+        }
+    }
+}

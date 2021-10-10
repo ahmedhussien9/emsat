@@ -1,0 +1,382 @@
+// Importing boostrap
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~bootstrap/scss/bootstrap";
+@import "~ngx-toastr/toastr";
+@import "~src/assets/scss/global.scss";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+.form-control:focus,
+.btn:focus {
+  box-shadow: none !important;
+}
+
+mat-toolbar {
+  background: $whiteColor !important;
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+.sidenav-content-toolbar {
+  border-bottom: 1px solid #f1f1f1;
+  // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+mat-sidenav {
+  // background: transparent linear-gradient(359deg, #ffffff00 0%, #ffffff0a 23%, #ffffff 100%) 0% 0% no-repeat padding-box;
+  // box-shadow: 0px 15px 15px #0000000d;
+  border: 1px solid #f1f1f1;
+}
+
+.card-wrap {
+  padding: 1px;
+  background: #ffff;
+  box-shadow: 5px 5px 10px #0000000d;
+}
+
+// Side navbar container
+.mat-drawer-inner-container {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 5px;
+}
+
+/* Track */
+.mat-drawer-inner-container::-webkit-scrollbar-track {
+  background: $lighGrayColor;
+  width: 2px !important;
+  border-radius: 5px;
+}
+
+/* Handle */
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+  background: $properColor;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.mat-drawer-inner-container::-webkit-scrollbar-thumb:hover {
+  background: $properColor;
+}
+
+.filter-btn-small-screen {
+  display: none;
+}
+@media screen and (max-width: 770px) {
+  .filter-btn-small-screen {
+    display: flex;
+    width: 100%;
+  }
+}
+
+.container-content {
+  .row {
+    margin: 0rem 0rem;
+  }
+}
+
+.spinner-container {
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-page {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 75px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0rem 0rem 0rem 1rem !important;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  height: 70px !important;
+}
+
+.mat-drawer-content {
+  overflow-x: hidden !important;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    font-size: 70% !important;
+  }
+  .wrapper {
+    padding: 2rem 0.3rem !important;
+  }
+  mat-sidenav-content {
+    padding: 0rem 0.5rem !important;
+  }
+  .row {
+    padding: 0px;
+  }
+  .row > * {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
+.ngx-pagination {
+  margin: 1.5rem auto;
+  padding-left: 0px !important;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ngx-pagination .current,
+.btn-info {
+  color: #ffffff !important;
+  background-color: $properColor !important;
+  font-size: 14px;
+  border-radius: 3px !important;
+}
+
+.ngx-pagination li {
+  display: inline-block;
+  margin: 0.5rem 0.3rem;
+}
+.ngx-pagination li:last-child,
+li:last-child a {
+  display: block;
+  // width: 80px;
+}
+.ngx-pagination a,
+.ngx-pagination button {
+  color: $lighGrayColor !important;
+  background-color: $lightGray !important;
+  border-color: transparent;
+  margin: 0rem 0.3rem;
+  text-decoration: none;
+  text-align: center;
+}
+.mat-list-base .mat-list-item .mat-list-item-content {
+  font-family: Poppins-Regular !important;
+}
+@font-face {
+  font-family: Poppins-Light;
+  src: url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype"),
+    url(./assets/fonts/Poppins/Poppins-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url(./assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype"),
+    url(./assets/fonts/Poppins/Poppins-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url(./assets/fonts/Poppins/Poppins-SemiBold.ttf) format("truetype"),
+    url(./assets/fonts/Poppins/Poppins-SemiBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: Poppins-ExtraBold;
+  src: url(./assets/fonts/Poppins/Poppins-ExtraBold.ttf) format("truetype"),
+    url(./assets/fonts/Poppins/Poppins-ExtraBold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: DUBAI-LIGHT;
+  src: url(./assets/fonts/DUBAI-LIGHT.TTF) format("truetype"), url(./assets/fonts/DUBAI-LIGHT.TTF) format("truetype");
+}
+
+@font-face {
+  font-family: DUBAI-REGULAR;
+  src: url(./assets/fonts/DUBAI-REGULAR.TTF) format("truetype"),
+    url(./assets/fonts/DUBAI-REGULAR.TTF) format("truetype");
+}
+
+@font-face {
+  font-family: DUBAI-MEDIUM;
+  src: url(./assets/fonts/DUBAI-MEDIUM.TTF) format("truetype"), url(./assets/fonts/DUBAI-MEDIUM.TTF) format("truetype");
+}
+@font-face {
+  font-family: DUBAI-BOLD;
+  src: url(./assets/fonts/DUBAI-BOLD.TTF) format("truetype"), url(./assets/fonts/DUBAI-BOLD.TTF) format("truetype");
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Poppins-Regular;
+  background: #fff !important;
+  [dir="rtl"] & {
+    font-family: DUBAI-REGULAR;
+  }
+}
+
+h1 {
+  font-family: Poppins-ExtraBold;
+  [dir="rtl"] & {
+    font-family: DUBAI-BOLD;
+    font-weight: bold;
+    font-size: 35px;
+  }
+}
+.icon-style {
+  color: $mainColor;
+  font-size: 25px;
+}
+
+.pending-status {
+  color: $redColor;
+}
+
+.active-status {
+  color: $greenColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-bottom: 0px;
+}
+
+button {
+  margin-left: auto;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+@media screen and (max-width: 600px) {
+  html,
+  body {
+    font-size: 80% !important;
+  }
+}
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+html {
+  height: -webkit-fill-available;
+}
+ngx-dropdown-button .span,
+input.form-control,
+select,
+textarea {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  outline: none !important;
+  height: 45px;
+  border: 1px solid #dddddd;
+  box-shadow: 0 2px 4px -2px #bbbbbb;
+  border-radius: 5px !important;
+  background: #fff !important;
+}
+
+.ngx-dropdown-container .ngx-dropdown-button {
+  width: 100%;
+  min-height: 45px;
+  padding: 5px 10px;
+  background-color: #fff;
+  outline: none !important;
+  height: 45px !important;
+  border: 1px solid #dddddd;
+  box-shadow: 0 2px 4px -2px #bbbbbb;
+  border-radius: 5px !important;
+}
+
+input.form-control:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 2px solid $mainColor !important;
+}
+
+.form-group {
+  margin: 0rem 0rem;
+  .label {
+    font-weight: 500;
+    margin: 0.5rem 0rem;
+    font-size: 14px;
+    font-family: Poppins-SemiBold;
+    [dir="rtl"] & {
+      font-family: DUBAI-MEDIUM;
+    }
+  }
+}
+
+input::placeholder {
+  color: #ccc !important;
+  opacity: 1; /* Firefox */
+}
+
+input::-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+
+input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #ccc;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.is-inavlid {
+  border-color: red !important;
+}
+
+.main-title {
+  margin: 1.5rem 0rem;
+  font-size: 1.8rem;
+}
+
+.md-drppicker .btn {
+  background-color: $mainColor !important;
+  color: #fff;
+  padding: 0rem 3rem !important;
+}
+
+.md-drppicker .btn,
+.md-drppicker td.active {
+  background-color: $mainColor !important;
+}
+
+.md-drppicker td.off,
+.md-drppicker td.off.end-date,
+.md-drppicker td.off.in-range,
+.md-drppicker td.off.start-date {
+  border-color: transparent;
+  color: #ffff !important;
+}

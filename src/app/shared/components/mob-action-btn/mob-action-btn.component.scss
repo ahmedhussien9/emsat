@@ -1,0 +1,30 @@
+@import "~src/assets/scss/variables.scss";
+:host {
+    position: fixed;
+    bottom: 20px;
+    left: 25px;
+    z-index: 9999;
+    .action-btn {
+        color: $whiteColor;
+        font-weight: normal;
+        box-shadow: $box-shadow;
+        transition: all 0.5s ease-in-out;
+        background: $mainBackgroundColor;
+        border-radius: 50% !important;
+        background: #008755;
+        height: 50px;
+        width: 50px;
+        min-width: 50px;
+        [dir="rtl"] & {
+            font-family: Montserrat-Regular, DroidArabic;
+        }
+        &:focus {
+            outline: none;
+            box-shadow: 0;
+        }
+        [dir="rtl"] & {
+            margin-right: auto;
+            margin-left: initial;
+        }
+    }
+}

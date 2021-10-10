@@ -1,0 +1,99 @@
+@import "~src/assets/scss/variables.scss";
+@import "~src/assets/scss/author.scss";
+
+.wrapper {
+    padding: 2rem 2rem;
+    background: #fff;
+    .main-title {
+        margin: 1.5rem 0rem;
+        font-size: 1.8rem;
+    }
+}
+
+.exam__info {
+    &__form {
+        .exam-details,
+        .times-container,
+        .times-container {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 15px 20px;
+            .form-group {
+                flex: 1 1 48%;
+            }
+        }
+    }
+}
+.duration-container {
+    margin: 1.5rem 0rem;
+    border: 1px solid #7777;
+    background: #f2f2f2;
+    border-radius: 8px;
+    padding: 2rem 1rem;
+
+    .duration__header {
+        display: flex;
+        margin-bottom: 1rem;
+        align-items: center;
+        &__title {
+            flex-grow: 1;
+        }
+        &__action {
+            .btn {
+                background: $redColor;
+                color: #fff;
+            }
+        }
+    }
+}
+.duration,
+.duration-times {
+    margin: 1.5rem 0rem;
+    display: flex;
+    align-items: center;
+    &__title {
+        flex-grow: 1;
+        h3 {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        h6 {
+            font-weight: bold;
+        }
+    }
+    &__action {
+        .btn {
+            background-color: $mainColor;
+            color: $whiteColor;
+        }
+    }
+}
+
+.submit-btn {
+    margin: 2.5rem 0rem;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+::ng-deep {
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+        background-color: #fff !important;
+    }
+    .author {
+        &__imagePreview {
+            &__container {
+                img {
+                    border: 3px dashed $lightDark !important;
+                    width: 160px;
+                    height: 160px;
+                    border-radius: 8px !important; 
+                    object-fit: cover;
+                    box-shadow: 0 2px 4px -2px #bbbbbb;
+                }
+            }
+        }
+    }
+}

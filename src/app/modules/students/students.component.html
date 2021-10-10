@@ -1,0 +1,114 @@
+<div class="wrapper">
+  <div class="wrapper__header">
+    <h1 class="main-title">Students List</h1>
+  </div>
+
+  <!-- <div class="filter-container">
+    <div class="form-group">
+      <div class="input-wrapper">
+        <object type="image/svg+xml" data="./assets/images/search.svg">
+          <img src="./assets/images/search.svg">
+        </object>
+        <input type="text" formControlName="search" placeholder="Search by VAT number" class=" form-control" autofocus>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control" />
+    </div>
+    <div class="apply-filter">
+      <button type="button" class="btn" (click)="downloadAll()">
+        Apply
+      </button>
+    </div>
+  </div> -->
+
+  <ng-container *ngIf="loading">
+    <app-loader></app-loader>
+  </ng-container>
+  <ng-container *ngIf="!loading">
+    <div class="tabelContainer">
+      <table class="table  ">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Emirate ID</th>
+            <th>Phone</th>
+            <th>Attachement</th>
+            <th>Critira</th>
+            <th>Sub Critira</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let student of students | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }; let i = index"
+            style="cursor: pointer">
+            <td>{{i + 1}}</td>
+            <td>{{ student.name}}</td>
+            <td><a (click)="displayAttachments([], student.name ,student.image.url)"><img *ngIf="student.image"
+                  [src]="student.image.url"
+                  style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;"></a>
+            </td>
+            <td>{{student.id_number}}</td>
+            <td>{{student.mobile}}</td>
+            <td>
+              <a (click)="displayAttachments(student.attachments, 'Attachments')" class="icon-style"> <i
+                  class="fas fa-download"></i></a>
+            </td>
+            <td>
+              <span *ngIf="student && student.criteria"> {{student.criteria.name}}</span>
+            </td>
+            <td>
+              <a (click)="displayAttachments(student.sub_criterias, 'Student Sub Critira')" class="icon-style"><i
+                  class="fas fa-eye"></i> </a>
+            </td>
+            <td>
+              <span *ngIf="student.status && student.status[0] && student.status[0].text === 'pending'"
+                class="pending-status">
+                {{student.status[0].text}}
+              </span>
+              <span *ngIf="student.status && student.status[0] && student.status[0].text === 'active'"
+                class="active-status">
+                {{student.status[0].text}}
+              </span>
+
+            </td>
+            <td>
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <ng-container *ngIf="student.status && student.status[0]&& student.status[0].text === 'pending'">
+                  <button mat-menu-item (click)="approveStudent(student._id)">
+                    <mat-icon>done</mat-icon>
+                    <span>{{ "Approve" | translate }}</span>
+                  </button>
+
+                  <!-- <button mat-menu-item (click)="activeEmployee(element._id, false)">
+                    <mat-icon>block</mat-icon>
+                    <span>{{ "Deactive" | translate }}</span>
+                  </button> -->
+                </ng-container>
+                <!-- <ng-container *ngIf="!element?.employeeInfo?.is_active">
+                  <button mat-menu-item (click)="activeEmployee(element._id, true)">
+                    <mat-icon>done</mat-icon>
+                    <span>{{ "Active" | translate }}</span>
+                  </button>
+                </ng-container> -->
+              </mat-menu>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls [previousLabel]="'Preview' | translate" [nextLabel]="'Next' | translate"
+      (pageChange)="getPage($event)">
+    </pagination-controls>
+  </ng-container>
+
+</div>

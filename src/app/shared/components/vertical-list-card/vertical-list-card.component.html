@@ -1,0 +1,7 @@
+<section class="row" style="margin: 20px 0px">
+    <section class="col-md-12" *ngFor="let singleNotification of notifications">
+        <app-vertical-single-card [notification]="singleNotification"
+            (isClickedDeleteEvent)="isClickedDeleteEventFromList($event)"
+            (isReadHandlerEvent)="isReadHandlerEventFromList($event)"></app-vertical-single-card>
+    </section>
+</section>

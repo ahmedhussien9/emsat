@@ -1,0 +1,259 @@
+@import "~src/assets/scss/variables.scss";
+
+.wrapper {
+    padding: 2rem 2rem;
+    background: #fff;
+    .main-title {
+        margin: 1.5rem 0rem;
+        font-size: 1.8rem;
+    }
+    .form-control {
+        box-shadow: none;
+    }
+    .page-description {
+        margin-bottom: 2rem;
+    }
+    .customer-data,
+    .invoice-data,
+    .customer-address-data,
+    .dropFile-container {
+        margin-top: 1rem;
+        margin-bottom: 3.5rem;
+        .title {
+            font-weight: bold;
+            background: rgba(49, 39, 89, 0.05);
+            padding: 1rem 1rem 1rem 1rem;
+            border-radius: $borderRadius;
+            position: relative;
+            font-size: 16px;
+            color: $mainColor;
+            border: 1px solid #f1f1f1;
+            margin-bottom: 1rem;
+            // box-shadow: 0 2px 4px -2px #bbbbbb;
+            &::before {
+                // content: "";
+                // position: absolute;
+                // width: 20px;
+                // height: 20px;
+                // background: #999;
+                // border-radius: 50%;
+                // left: 10px;
+                // top: 15px;
+            }
+        }
+    }
+    .customer-inputs,
+    .invoice-inputs {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 15px 20px;
+        .form-group {
+            flex: 1 1 48%;
+        }
+    }
+    /////////////////////////
+    // Start Attachement URl
+    //////////////////////////
+    .attachementUrl-container {
+        .inputs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 20px;
+            > div {
+                flex: 1 1 48%;
+                border: 1px solid $borderColor;
+                padding: 20px;
+                margin: 1rem 0rem;
+                border-radius: $borderRadius;
+            }
+        }
+    }
+    // Start items table
+    .item-list,
+    .attachementUrl-container {
+        margin: 1.5rem 0rem;
+        &__header {
+            display: flex;
+            font-weight: bold;
+            background: #f6f6f6;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            border-radius: $borderRadius;
+            position: relative;
+            font-size: 16px;
+            align-items: center;
+            color: $mainColor;
+            border: 1px solid $lighGrayColor;
+            box-shadow: 0 2px 4px -2px #bbbbbb;
+            .btn {
+                background: $mainColor;
+                color: $whiteColor;
+                padding: 0.4rem 1rem;
+            }
+            &::before {
+                // content: "";
+                // position: absolute;
+                // width: 20px;
+                // height: 20px;
+                // background: #999;
+                // border-radius: 50%;
+                // left: 10px;
+                // top: 18px;
+            }
+            .title {
+                font-weight: bold;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .submit-invoice {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 2rem;
+        .btn {
+            background: $mainColor;
+            color: #fff;
+            text-align: center;
+            margin: auto;
+            padding: 0.8rem 3rem;
+        }
+    }
+    .table-wrapper {
+        overflow: auto;
+        border-radius: $borderRadius;
+        border: 1px solid #d8d8d8;
+        margin: 2rem 0rem;
+        .table {
+            border: 1px solid #ccc;
+            border-radius: $borderRadius;
+            margin-bottom: 0px;
+            border-spacing: 0;
+            border-collapse: collapse;
+            border-style: hidden;
+
+            width: 100%;
+            max-width: 100%;
+
+            thead tr {
+                color: #fff;
+                background: $mainColor;
+                vertical-align: middle;
+                font-size: 12px;
+            }
+
+            tbody tr {
+                vertical-align: middle;
+            }
+        }
+    }
+
+    .products-list-summary {
+        display: flex;
+        .list-summary {
+            flex-basis: 400px;
+            border: 1px solid $borderColor;
+            padding: 1rem;
+            border-radius: $borderRadius;
+            .item {
+                list-style-type: none;
+                margin: 0.8rem 0rem;
+                display: flex;
+                &__title {
+                    font-weight: bold;
+                    flex-grow: 1;
+                }
+                &__value {
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+
+    .dropFile-container {
+        &__header {
+            display: flex;
+            .remove {
+                margin-left: auto;
+                border: none;
+                padding: 0.4rem 1rem;
+                border-radius: $borderRadius;
+                text-decoration: none;
+                background: #e84118;
+                color: #ffffff;
+                font-family: sans-serif;
+                font-size: 1rem;
+                cursor: pointer;
+                text-align: center;
+                transition: background 250ms ease-in-out, transform 150ms ease;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+            }
+        }
+        .dropFile-details {
+            background: #fff;
+            &__header {
+                padding: 20px 20px;
+                border-bottom: 1px solid #f1f1f1;
+                background: #5f72be;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                h6 {
+                    color: #fff;
+                    font-size: 16px;
+                }
+            }
+            .files-container {
+                background: #fff;
+            }
+        }
+    }
+    ///////////////////////////
+    // Start terms & coniditons
+    ////////////////////////////
+
+    .invoice-termsAndConditions {
+        margin: 1.5rem 0rem;
+        .title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .list {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style-type: none;
+        }
+    }
+    .invoice-termsAndConditions {
+    }
+
+    // End Items table
+    @media screen and (min-width: 450px) {
+        .customer-address-inputs {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            margin: 0.5rem 0rem;
+            .form-group {
+                flex: 1 1 30%;
+                margin: 0.5rem 0.5rem;
+            }
+        }
+    }
+    @media screen and (max-width: 449px) {
+        .customer-address-inputs {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            margin: 0.5rem 0rem;
+            .form-group {
+                flex: 1 1 48%;
+                margin: 0.5rem 0.5rem;
+            }
+        }
+    }
+}

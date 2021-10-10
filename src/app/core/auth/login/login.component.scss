@@ -1,0 +1,188 @@
+@import "~src/assets/scss/variables.scss";
+@import "~src/assets/scss/author.scss";
+
+:host {
+  background: #fff !important;
+  .auth-container {
+    display: flex;
+    position: relative;
+    .auth-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 1;
+      overflow: auto;
+      padding-bottom: 2rem;
+      background: #fff !important;
+      .auth-card-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &__logo {
+          margin-bottom: 1rem;
+          height: 70px;
+        }
+        &__title {
+          margin: 0.5rem 0rem;
+          font-weight: 700;
+          text-align: center;
+          [dir="ltr"] & {
+            font-size: 25px;
+          }
+          span {
+            color: #63b5ff;
+          }
+        }
+        &__text {
+          margin: 0.5rem 0rem;
+          text-align: center;
+        }
+      }
+      .auth-card-body {
+        margin: 0rem 0rem 0.5rem 0rem;
+        width: 100%;
+        .form-container {
+          .form-group {
+            margin: 0rem 0rem;
+            .input-wrapper {
+              position: relative;
+              .login-userId-input,
+              .password-input {
+                text-indent: 28px !important;
+                padding-right: 25px;
+                [dir="rtl"] & {
+                  padding-right: 8px !important;
+                }
+              }
+              .password-input {
+                [dir="rtl"] & {
+                  padding-left: 30px !important;
+                  padding-right: 8px !important;
+                }
+              }
+              object {
+                height: 18px;
+                position: absolute;
+                top: 13px;
+                left: 16px;
+                [dir="rtl"] & {
+                  right: 16px;
+                  left: initial;
+                }
+              }
+              .show-password,
+              .hide-password {
+                height: 18px;
+                position: absolute;
+                top: 12px;
+                right: 16px;
+                cursor: pointer;
+                color: $mainColor;
+                z-index: 1;
+                [dir="rtl"] & {
+                  left: 16px;
+                  right: initial;
+                }
+              }
+            }
+
+            .label {
+              font-weight: 700;
+              margin: 0.5rem 0rem;
+            }
+            .form-control {
+              border-radius: 2px;
+            }
+          }
+
+          .form-check {
+            margin: 0.5rem 0rem;
+          }
+        }
+
+        .auth-card-submit {
+          margin: 2rem 0rem;
+        }
+        .register-user {
+          h6 {
+            font-weight: bold;
+            text-align: center;
+            a {
+              color: $mainColor;
+              cursor: pointer;
+            }
+          }
+        }
+        .auth-company {
+          display: flex;
+          justify-content: center;
+
+          &__link {
+            color: #1488cc;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+    .auth-bg {
+      flex-grow: 5;
+      display: flex;
+      height: 100vh;
+      position: relative;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    .language-container {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      [dir="rtl"] & {
+        right: initial;
+        left: 20px;
+      }
+      a {
+        background-color: #fff;
+        padding: 0.2rem 1rem;
+        border-radius: 3px;
+        box-shadow: 0 2px 4px -2px #bbbbbb;
+        cursor: pointer;
+        font-weight: bold;
+      }
+    }
+  }
+  @media screen and (min-width: 649px) {
+    .auth-card {
+      width: 50%;
+      padding: 0rem 5rem;
+    }
+  }
+  @media screen and (min-width: 850px) {
+    .auth-card {
+      width: 400px;
+      padding: 0rem 2rem;
+      [dir="rtl"] & {
+        padding: 0rem 8rem 0rem 0rem !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .auth-container {
+      background-size: auto;
+    }
+    .auth-card {
+      width: 100% !important;
+      overflow: auto;
+      padding: 0rem 1.5rem;
+    }
+    .auth-bg {
+      display: none;
+    }
+  }
+}

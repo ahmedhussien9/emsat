@@ -1,0 +1,113 @@
+@import "~src/assets/scss/variables.scss";
+
+::ng-deep {
+  .progress {
+    overflow: initial !important;
+  }
+  .progress-bar {
+    border-radius: 45px !important;
+    transition: 0.3s width ease-in-out;
+  }
+  .progress-value {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    img {
+      margin: auto;
+      height: 80%;
+    }
+    .value {
+      position: absolute;
+      transform: translate(-50%, 50%);
+      top: 50%;
+      left: 50%;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+      span {
+        margin-right: 5px;
+      }
+    }
+  }
+  .link-wrapper {
+    width: 90%;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    ngb-progressbar {
+      position: relative;
+      margin: 1.4rem 0rem;
+      height: 0.2rem !important;
+      span {
+        position: absolute;
+        top: 5px;
+        font-size: 16px;
+        color: $lightRed !important;
+        font-family: DUBAI-MEDIUM;
+      }
+    }
+
+    &:nth-of-type(1) {
+      ngb-progressbar {
+        span {
+          color: $properColor !important;
+        }
+        .progress-bar {
+          background-color: $properColor !important;
+        }
+      }
+    }
+    &:nth-of-type(2) {
+      ngb-progressbar {
+        span {
+          color: $lightRed !important;
+        }
+        .progress-bar {
+          background-color: $lightRed !important;
+        }
+      }
+    }
+    &:nth-of-type(3) {
+      ngb-progressbar {
+        span {
+          color: $orange !important;
+        }
+        .progress-bar {
+          background-color: $orange !important;
+        }
+      }
+    }
+    &:nth-of-type(4) {
+      ngb-progressbar {
+        span {
+          color: $yellow !important;
+        }
+        .progress-bar {
+          background-color: $yellow !important;
+        }
+      }
+    }
+    &:nth-of-type(5) {
+      ngb-progressbar {
+        span {
+          color: $greenColor !important;
+        }
+        .progress-bar {
+          background-color: $greenColor !important;
+        }
+      }
+    }
+    &:nth-of-type(6) {
+      ngb-progressbar {
+        span {
+          color: $darkGray !important;
+        }
+        .progress-bar {
+          background-color: $darkGray !important;
+        }
+      }
+    }
+  }
+}

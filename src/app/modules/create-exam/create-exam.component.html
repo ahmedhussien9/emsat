@@ -1,0 +1,141 @@
+<div class="wrapper">
+    <h1 class="main-title">Generate an exam</h1>
+    <!-- <p class="page-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum distinctio nesciunt
+        doloremque neque! Molestias
+        pariatur repudiandae explicabo aut reiciendis culpa atque distinctio qui quo id. Maxime incidunt at error animi.
+    </p> -->
+    <!--Start Invoice Info Section-->
+    <section class="exam__info">
+        <!---------------------->
+        <!--Start Invoice Form-->
+        <!---------------------->
+        <!--membership profile image-->
+        <div class="author">
+            <div class="author__uploadFile">
+                <input type="file" #filePicker (change)="onImagePicked($event)" />
+            </div>
+            <div class="author__imagePreview">
+                <ng-container>
+                    <a class="author__imagePreview__container" (click)="filePicker.click()">
+                        <img [src]="imagePreview" class="avatar border-gray" />
+                    </a>
+                </ng-container>
+            </div>
+        </div>
+        <!--End membership profile image-->
+        <form class="exam__info__form" [formGroup]="formGroup">
+            <div class="exam-details">
+                <div class="form-group">
+                    <div class="label">Name</div>
+                    <input class="form-control" formControlName="name" type="text">
+                </div>
+
+                <div class="form-group">
+                    <div class="label">Student Degree</div>
+                    <select name="" id="" class="form-control" formControlName="criteria"
+                        (change)="selectedCriteria($event)">
+                        <option *ngFor="let criteria of criterias" [value]="criteria._id">{{criteria.name}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="label">Sub Critira</div>
+                    <ngx-select-dropdown [config]="config" [(ngModel)]="selectedSubCri" [ngModelOptions]="{standalone: true}" (change)="selectedSubCr($event)"
+                        [options]="subCriteria"  [multiple]="true">
+                    </ngx-select-dropdown>
+                </div>
+                <div class="form-group">
+                    <div class="label">Test Centers</div>
+                    <ngx-select-dropdown [config]="config" [(ngModel)]="selectedCenters" [ngModelOptions]="{standalone: true}"
+                        (change)="selectedCentersHandler($event)" [options]="testCenters" 
+                        [multiple]="true">
+                    </ngx-select-dropdown>
+                </div>
+            </div>
+
+            <div class="duration">
+                <div class="duration__title">
+                    <h3>Schedule Exam Durations</h3>
+                </div>
+                <div class="duration__action">
+                    <button class="btn" (click)="addNewDuration()">Add Duration</button>
+                </div>
+            </div>
+            <ng-container *ngFor="let duration of getDurationControls(); let c = index" formArrayName="durations">
+                <ng-container [formGroupName]="c">
+                    <div class="duration-container">
+                        <div class="duration__header">
+                            <div class="duration__header__title">
+                                <h6> <strong>#{{c+1}} Duration</strong></h6>
+                            </div>
+                            <div class="duration__header__action">
+                                <button class="btn"> Remove</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="date"
+                                    (dateInput)="addEvent(c, $event)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+                            <!--Start the times header for duration-->
+                            <div class="duration-times">
+                                <div class="duration-times__title">
+                                    <h6>Available Times</h6>
+                                </div>
+                                <div class="duration-times__action">
+                                    <button class="btn" (click)="addTimes(c,x)">Add Times</button>
+                                </div>
+                            </div>
+                            <!--End the times header for duration-->
+                            <!--Start times forms-->
+                            <ng-container *ngFor="let time of duration['controls']?.times?.controls; let x = index"
+                                formArrayName="times">
+                                <ng-container [formGroupName]="x">
+                                    <div class="times-container">
+                                        <div class="form-group">
+                                            <label for="" class="from">From</label>
+                                            <input type="time" class="form-control" formControlName="from">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="" class="from">To</label>
+                                            <input type="time" class="form-control" formControlName="to">
+                                        </div>
+                                    </div>
+
+                                </ng-container>
+                            </ng-container>
+                            <!--End times forms-->
+
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+
+
+            <div class="form-group">
+                <label for="" class="label">Description</label>
+                <textarea name="" id="" cols="40" rows="8" formControlName="description" style="height:100%;"
+                    class="form-control"></textarea>
+                <!-- <small class="form-text text-danger"
+                    *ngIf="formGroup.controls['description']?.errors?.required && isSubmitted">Notes
+                    is
+                    required
+                </small> -->
+            </div>
+
+
+
+            <div class="submit-btn">
+                <app-submit-btn [loading]="loading" [title]="'Save Exam' | translate" (isClickedEvent)="submit()">
+                </app-submit-btn>
+            </div>
+        </form>
+        <!--End Invoice Form-->
+    </section>
+    <!--End Invoice Info Section-->
+</div>

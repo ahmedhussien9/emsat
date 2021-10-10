@@ -1,0 +1,23 @@
+<div class="items">
+  <div
+    class="item"
+    *ngFor="let item of items; let i = index"
+    [class.items-background-color]="!hasIcons"
+    [ngStyle]="{
+      justifyContent: hasIcons ? '' : 'center'
+    }"
+  >
+    <div class="icon" *ngIf="hasIcons">
+      <i [ngClass]="icons[i]"></i>
+    </div>
+    <div class="details" [ngStyle]="{ textAlign: hasIcons ? '' : 'center' }">
+      <p class="details__value">{{ item.value }}</p>
+      <h6
+        class="details__title"
+        [ngStyle]="{ color: hasIcons ? COLORS.lighGray : COLORS.white }"
+      >
+        {{ item.name | translate }}
+      </h6>
+    </div>
+  </div>
+</div>

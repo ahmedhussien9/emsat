@@ -1,0 +1,61 @@
+@mixin circleBefore($backgroundColor, $width, $height) {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: $width;
+    height: $height;
+    background: $backgroundColor;
+    border-radius: 50%;
+    -webkit-animation: pulse-border 1.5s ease-out infinite;
+    animation: pulse-border 1.5s ease-out infinite;
+    z-index: 1;
+}
+
+@mixin circleAfter($borderColor) {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 2px dashed $borderColor;
+    -webkit-animation: shapeani2 12s linear infinite;
+    animation: shapeani2 12s linear infinite;
+}
+
+@keyframes pulse-border {
+    0% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.3);
+        opacity: 0;
+    }
+}
+
+@keyframes shapeani2 {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shapeani3 {
+    0% {
+        transform: translateY(15px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(15px);
+    }
+}

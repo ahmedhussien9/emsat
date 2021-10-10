@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="wrapper__header">
+        <h1 class="main-title">Invoice Preview</h1>
+        <button type="button" class="btn">
+            Download All
+        </button>
+    </div>
+    <!-- <ng-container>
+        <app-loader></app-loader>
+    </ng-container> -->
+    <div class="wrapper__body">
+        <!-- <object [data]="pdfUrl" type="application/pdf" style="width:100%; height:1000px"></object> -->
+        <object #pdfview [data]='' type="application/pdf" width="100%" height="800px">
+        </object>
+    </div>
+</div>

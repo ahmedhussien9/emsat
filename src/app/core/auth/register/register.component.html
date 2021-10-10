@@ -1,0 +1,142 @@
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-card-header">
+            <!-- <img src="./assets/icons/computer.png" class="auth-card-header__logo"> -->
+            <h1 class="auth-card-header__title">{{'Student Registration' | translate}}</h1>
+            <P class="auth-card-header__text">Digitize and automate exams processing
+                <br> as per the country regulation
+            </P>
+        </div>
+
+        <!--membership profile image-->
+        <div class="author">
+            <div class="author__uploadFile">
+                <input type="file" #filePicker (change)="onImagePicked($event)" />
+            </div>
+            <div class="author__imagePreview">
+                <ng-container>
+                    <a class="author__imagePreview__container" (click)="filePicker.click()">
+                        <img [src]="imagePreview" class="avatar border-gray" />
+                    </a>
+                </ng-container>
+            </div>
+        </div>
+        <!--End membership profile image-->
+        <div class="auth-card-body">
+            <form class="form-container" [formGroup]="formGroup">
+                <div class="form-container__first" style="width: 100%;">
+                    <div class="form-group">
+                        <label class="label">Name</label>
+                        <input class="form-control" type="text" placeholder="Ahmed Khattab" autofocus
+                            formControlName="name">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Emirates ID</label>
+                        <input class="form-control" type="text" placeholder="784**********" formControlName="id_number">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Email</label>
+                        <input class="form-control" type="email" placeholder="test@gmail.com" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Mobile</label>
+                        <input class="form-control" type="tel" placeholder="+9710568524418" formControlName="mobile">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="label">Student Degree</div>
+                        <select name="" id="" class="form-control" formControlName="criteria"
+                            (change)="selectedCriteria($event)">
+                            <option *ngFor="let criteria of criterias" [value]="criteria._id">{{criteria.name}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="label">Sub Critira</div>
+                        <ngx-select-dropdown [config]="config" [(ngModel)]="selectedSubCri"
+                            [ngModelOptions]="{standalone: true}" (change)="selectedSubCr($event)"
+                            [options]="subCriteria" [multiple]="true">
+                        </ngx-select-dropdown>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">Password</label>
+                        <div class="input-wrapper">
+                            <input class="form-control" [type]="!showPassword? 'password' : 'text'"
+                                formControlName="password" placeholder="**************">
+                            <ng-container *ngIf="!showPassword">
+                                <a class="show-password" (click)="showPasswordHandler()">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </ng-container>
+                            <ng-container *ngIf="showPassword">
+                                <a class="hide-password" (click)="showPasswordHandler()">
+                                    <i class="fas fa-eye-slash"></i> </a>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <input class="form-control" [type]="!showConfirmPassword? 'password' : 'text'"
+                                placeholder="**************" formControlName="confirmPassword">
+                            <ng-container *ngIf="!showConfirmPassword">
+                                <a class="show-password" (click)="showConfirmPasswordHandler()">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </ng-container>
+                            <ng-container *ngIf="showConfirmPassword">
+                                <a class="hide-password" (click)="showConfirmPasswordHandler()">
+                                    <i class="fas fa-eye-slash"></i> </a>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <!----------------------------->
+                    <!--Start Upload Attachements-->
+                    <!----------------------------->
+                    <div class="dropFile-container">
+                        <h6 class="title" style="font-weight: bold; margin-top: 2rem;">Upload Attachements
+                            (Certificates)</h6>
+                        <app-upload-file (filesEvent)="droppedFiles('FIRST_SAMPLE', $event)"
+                            [sampleTitle]="'Sample 1 (Mandatroy)'" [filesCount]="firstSampleFiles.length">
+                        </app-upload-file>
+                        <div class="dropFile-container__header">
+                        </div>
+                        <ng-container *ngIf="firstSampleFiles.length > 0">
+                            <div class="dropFile-details">
+                                <div class="dropFile-details__header">
+                                    <h6>First samples files</h6>
+                                </div>
+                                <div *ngFor="let item of firstSampleFiles; let i=index" class="files-container">
+                                    <app-upload-file-details [file]="item" (deleteFile)="deleteFile('FIRST_SAMPLE', i)"
+                                        [number]="i + 1">
+                                    </app-upload-file-details>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                    <!--End Upload Attachments-->
+                    <div class="auth-card-submit">
+                        <app-submit-btn [loading]="loading" [title]="'Register'" (isClickedEvent)="register()">
+                        </app-submit-btn>
+                    </div>
+
+                    <div class="register-user">
+                        <h6>{{'already_have_account' |
+                            translate}} <a class="auth-company__link" [routerLink]="['/auth/login']">
+                                <strong>{{'login' |
+                                    translate}}</strong></a>
+                        </h6>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    <div class="auth-bg" [ngStyle]="{'background-image': 'url(' + bgPhoto + ')'}"></div>
+
+    <!-- <div class="language-container">
+        <a (click)="switchLang()">{{'languageName' | translate}}</a>
+    </div> -->
+</div>

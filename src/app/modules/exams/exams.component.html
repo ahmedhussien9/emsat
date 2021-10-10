@@ -1,0 +1,74 @@
+<div class="wrapper">
+    <div class="wrapper__header">
+        <h1 class="main-title">Exams List</h1>
+    </div>
+    <ng-container *ngIf="loading">
+        <app-loader></app-loader>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+        <div class="tabelContainer">
+            <table class="table  ">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Centers</th>
+                        <th>Criteria</th>
+                        <th>Sub Criteria</th>
+                        <th>Durations</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let exam of exams | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }; let i = index"
+                        style="cursor: pointer">
+                        <td>{{i + 1}}</td>
+                        <td>{{ exam.name}}</td>
+                        <td><a (click)="displayAttachments([], exam.name ,exam.image.url)"><img *ngIf="exam.image"
+                                    [src]="exam.image.url"
+                                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;"></a>
+                        </td>
+                        <td>{{exam.description | slice:0:20}}</td>
+                        <td>
+                            <a (click)="displayAttachments(exam.centers, 'Centers')" class="icon-style"> <i
+                                    class="far fa-building"></i></a>
+                        </td>
+                        <td>
+                            {{exam.criteria.name}}
+                        </td>
+                        <td>
+                            <a (click)="displayAttachments(exam.sub_criterias, 'Sub Criteria')" class="icon-style"> <i
+                                    class="fas fa-list-ol"></i></a>
+                        </td>
+
+                        <td>
+                            <a (click)="displayDutrations(exam.durations, 'Exam Durations')" class="icon-style"> <i
+                                    class="far fa-calendar-alt"></i></a>
+                        </td>
+                        <td>
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <!-- <ng-container
+                                    *ngIf="center.status && center.status[0] && center.status[0].text === 'pending'">
+                                    <button mat-menu-item (click)="approveCenter(center._id)">
+                                        <mat-icon>done</mat-icon>
+                                        <span>{{ "Approve" | translate }}</span>
+                                    </button>
+                                </ng-container> -->
+                            </mat-menu>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls [previousLabel]="'Preview' | translate" [nextLabel]="'Next' | translate"
+            (pageChange)="getPage($event)">
+        </pagination-controls>
+    </ng-container>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="card-wrap">
+    <div class="sub-header">
+        <div class="page-title">
+            <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot  font-size-sm"
+                *ngIf="breadCrumbLinks.length > 0">
+                <li class="breadcrumb-item" *ngFor="let link of breadCrumbLinks"><a class="breadcrumb-item-link"
+                        [routerLink]="link.route">{{link | translateApi : 'title'}}</a></li>
+            </ul>
+        </div>
+        <div class="filter-container">
+            <div class="filter-btn-group">
+                <ng-content select=".btnOne"></ng-content>
+                <ng-content select=".btnTwo"></ng-content>
+            </div>
+            <ng-content select=".roundButton"></ng-content>
+        </div>
+    </div>
+</div>

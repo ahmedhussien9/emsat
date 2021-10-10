@@ -1,0 +1,38 @@
+@import "~src/assets/scss/variables.scss";
+@import "~src/assets/scss/mixins.scss";
+:host {
+    .btn {
+        height: 50px;
+        width: 50px;
+        background: $properColor;
+        color: $whiteColor;
+        border-radius: 50%;
+        line-height: 50px;
+        padding: 0px;
+        margin-left: 1rem;
+        position: relative;
+        &::before {
+            @include circleBefore($lightGray, 80px, 80px);
+        }
+        &::after {
+            @include circleAfter($whiteColor);
+        }
+        [dir="rtl"] & {
+            margin-left: initial;
+            margin-right: 1rem;
+        }
+        i {
+            font-size: 20px;
+        }
+    }
+
+@media screen and (max-width: $tablet-down) {
+        .btn {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            z-index: 9999;
+        }
+    }
+}
+

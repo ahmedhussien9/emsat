@@ -1,0 +1,29 @@
+<div class="canvas">
+  <canvas
+    baseChart
+    width="300"
+    height="250"
+    [data]="doughnutChartData"
+    [labels]="doughnutChartLabels"
+    [chartType]="doughnutChartType"
+    [legend]="legend"
+    [colors]="colors"
+    [options]="options"
+  >
+  </canvas>
+  <div class="img" *ngIf="img">
+    <img [src]="img" alt="" srcset="" />
+  </div>
+</div>
+
+<div *ngIf="hasDetails">
+  <h3 style="color: #b4b7cc; font-size: 14px">
+    {{ chartDetailsTitle }}
+  </h3>
+  <div class="chartDetails">
+    <div class="item" *ngFor="let label of labels">
+      <div [style.backgroundColor]="label.color"></div>
+      {{ label.title }}
+    </div>
+  </div>
+</div>

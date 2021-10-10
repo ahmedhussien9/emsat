@@ -1,0 +1,47 @@
+<section class="dialog">
+    <div class="dialog__header">
+        <div class="dialog__header__title">
+            <h3>Applay Exam</h3>
+        </div>
+        <div class="dialog__header__closeDialog">
+            <a (click)="closeDialog()">
+                <mat-icon>clear</mat-icon>
+            </a>
+        </div>
+    </div>
+    <div class="info" style="margin-bottom: 1.5rem;">
+        <h5><strong>{{examData.name}}</strong></h5>
+    </div>
+    <div class="body">
+        <form [formGroup]="formGroup">
+            <div class="form-group">
+                <div class="label">Center</div>
+                <select class="form-control" formControlName="center">
+                    <option selected value="">Choose center</option>
+                    <option *ngFor="let duration of examData.centers" [value]="duration._id">{{duration.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="label">Date</div>
+                <select class="form-control" (change)="changeDate($event)" formControlName="durationId">
+                    <option selected value="">Choose Date</option>
+                    <option *ngFor="let duration of examData.durations" [value]="duration._id">{{duration.date}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="label">Times</div>
+                <select class="form-control" formControlName="timeId">
+                    <option selected value="">Choose Time</option>
+                    <option *ngFor="let time of times" [value]="time._id"> From: {{time.from}} - To : {{time.to}}
+                    </option>
+                </select>
+            </div>
+            <div class="submit-btn">
+                <app-submit-btn [loading]="loading" [title]="'Submit'" (isClickedEvent)="submit()"></app-submit-btn>
+            </div>
+        </form>
+    </div>
+
+</section>

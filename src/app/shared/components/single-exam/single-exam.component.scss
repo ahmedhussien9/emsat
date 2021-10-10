@@ -1,0 +1,60 @@
+.exam {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #fdfdfd;
+    box-shadow: 0px 0px 6px #0000001a;
+    margin: 1rem 0rem;
+    background-color: #fff;
+    position: relative;
+    .isApplied {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        background: #00a550;
+        padding: 0.2rem 1rem;
+        border-radius: 3px;
+        color: #fff;
+        h5 {
+            font-size: 14px;
+        }
+    }
+    .info {
+        padding: 15px;
+        h5 {
+            font-weight: 700 !important;
+            text-transform: capitalize;
+            margin-bottom: 0.5rem;
+        }
+        .tag {
+            background: #289fee;
+            display: inline;
+            font-weight: 600;
+            padding: 0.2rem 1rem;
+            color: #fff;
+        }
+        p {
+            margin-top: 0.5rem;
+            font-size: 14px;
+        }
+    }
+    .exam-details-container {
+        margin-bottom: 1rem;
+        .item {
+            display: flex;
+            align-items: center;
+            p {
+                font-size: 0.8rem;
+            }
+            .item-left-side {
+                flex-grow: 1;
+            }
+            .item-right-side {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+a {
+    cursor: pointer;
+}

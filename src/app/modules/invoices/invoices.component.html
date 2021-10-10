@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="wrapper__header">
+    <h1 class="main-title">Invoices List</h1>
+    <button type="button" class="btn" (click)="downloadAll()">
+      Download All
+    </button>
+  </div>
+
+  <div class="filter-container">
+    <div class="form-group">
+      <div class="input-wrapper">
+        <object type="image/svg+xml" data="./assets/images/search.svg">
+          <img src="./assets/images/search.svg">
+        </object>
+        <input type="text" formControlName="search" placeholder="Search by VAT number" class=" form-control" autofocus>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" ngxDaterangepickerMd [(ngModel)]="selected" class="form-control" />
+    </div>
+    <div class="apply-filter">
+      <button type="button" class="btn" (click)="downloadAll()">
+        Apply
+      </button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="loading">
+    <app-loader></app-loader>
+  </ng-container>
+  <ng-container *ngIf="!loading">
+    <div class="tabelContainer">
+      <table class="table  ">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Data & time</th>
+            <th>Download PDF</th>
+            <th>Show</th>
+            <th>VAT Total</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let invoice of invoices | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }; let i = index"
+            style="cursor: pointer">
+            <td>{{i + 1}}</td>
+            <td>{{ invoice.issueDate | date: 'medium' }}</td>
+            <td><a class="btn" (click)="downloadInvoice($event, invoice.id, i)" #downloadFile><i class="fas fa-download"></i></a></td>
+            <td><a [routerLink]="[invoice.id]"><i class="far fa-eye"></i></a></td>
+            <td>{{ invoice.vatTotal | currency : "SAR "}}</td>
+            <td>{{ invoice.total | currency : "SAR "}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <pagination-controls [previousLabel]="'Preview' | translate" [nextLabel]="'Next' | translate"
+      (pageChange)="getPage($event)">
+    </pagination-controls>
+  </ng-container>
+
+</div>

@@ -1,0 +1,12 @@
+:host {
+    h5,
+    p {
+        margin-bottom: 1em;
+    }
+    button {
+        margin: 0px 10px;
+        [dir="rtl"] & {
+            font-family: Montserrat-Regular, DroidArabic;
+        }
+    }
+}

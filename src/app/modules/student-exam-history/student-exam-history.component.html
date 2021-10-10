@@ -1,0 +1,83 @@
+<div class="wrapper">
+    <div class="wrapper__header">
+        <h1 class="main-title">Student Exam History</h1>
+    </div>
+    <ng-container *ngIf="loading">
+        <app-loader></app-loader>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+        <div class="tabelContainer">
+            <table class="table  ">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Exam Name</th>
+                        <th>Exam Image</th>
+                        <th>Center</th>
+                        <th>Center Mobile</th>
+                        <th>Exam Date</th>
+                        <th>Exam Time</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let exam of studentExamHistory | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }; let i = index"
+                        style="cursor: pointer">
+                        <td>{{i + 1}}</td>
+                        <td>{{ exam.exam.name}}</td>
+                        <td><a (click)="displayAttachments([], '' ,exam.exam.image.url)"><img *ngIf="exam && exam.exam.image"
+                                    [src]="exam.exam.image.url"
+                                    style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;"></a>
+                        </td>
+                        <td>{{exam.center.name}}</td>
+                        <td>{{exam.center.mobile}}</td>
+                        <td>{{exam.duration.date}}</td>
+                        <td><strong>From: </strong>{{exam.duration.time.from}} - <strong>To: </strong>
+                            {{exam.duration.time.to}}</td>
+                            <td>
+                                <span *ngIf="exam.status && exam.status[0] && exam.status[0].text === 'pending'"
+                                  class="pending-status">
+                                  {{exam.status[0].text}}
+                                </span>
+                                <span *ngIf="exam.status && exam.status[0] && exam.status[0].active === 'pending'"
+                                  class="pending-status">
+                                  {{exam.status[0].text}}
+                                </span>
+                              </td>
+                        <td>
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+
+                                <ng-container
+                                    *ngIf="exam.status && exam.status[0] && exam.status[0].text === 'pending'">
+                                    <button mat-menu-item (click)="approveCenter(exam._id)">
+                                        <mat-icon>done</mat-icon>
+                                        <span>{{ "Approve" | translate }}</span>
+                                    </button>
+                                    <!-- <button mat-menu-item (click)="activeEmployee(element._id, false)">
+                      <mat-icon>block</mat-icon>
+                      <span>{{ "Deactive" | translate }}</span>
+                    </button> -->
+                                </ng-container>
+                                <!-- <ng-container *ngIf="!element?.employeeInfo?.is_active">
+                    <button mat-menu-item (click)="activeEmployee(element._id, true)">
+                      <mat-icon>done</mat-icon>
+                      <span>{{ "Active" | translate }}</span>
+                    </button>
+                  </ng-container> -->
+                            </mat-menu>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls [previousLabel]="'Preview' | translate" [nextLabel]="'Next' | translate"
+            (pageChange)="getPage($event)">
+        </pagination-controls>
+    </ng-container>
+
+</div>

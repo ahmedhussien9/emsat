@@ -1,0 +1,21 @@
+@import "~src/assets/scss/variables.scss";
+@import "~src/assets/scss/author.scss";
+
+.auth-container {
+    height: 100vh;
+    .auth-card {
+        min-height: 100vh;
+        justify-content: initial !important;
+        padding-top: 2rem;
+        .auth-card-header {
+        }
+    }
+    .auth-bg {
+        height: 100vh;
+    }
+}
+
+agm-map {
+    height: 300px;
+    margin: 2rem 0rem;
+}

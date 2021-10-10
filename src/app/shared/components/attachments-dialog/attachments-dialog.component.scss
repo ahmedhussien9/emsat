@@ -1,0 +1,48 @@
+@import "~src/assets/scss/dialog.scss";
+:host {
+    .image-container {
+        img {
+            width: 100%;
+        }
+    }
+    ul {
+        margin: 0px;
+        padding: 0px;
+        li {
+            margin: 7px 0px;
+            background: #f1f1f1;
+            padding: 5px;
+            border-radius: 3px;
+            list-style-type: none;
+            a {
+                color: $mainColor;
+                font-weight: bold;
+            }
+
+            // [dir="ltr"] & {
+            //     &::before {
+            //         content: "";
+            //         display: inline-block;
+            //         width: 15px;
+            //         height: 15px;
+            //         -moz-border-radius: 7.5px;
+            //         -webkit-border-radius: 7.5px;
+            //         border-radius: 7.5px;
+            //         background-color: $yellowColor;
+            //     }
+            // }
+            // [dir="rtl"] & {
+            //     &::after {
+            //         content: "";
+            //         display: inline-block;
+            //         width: 15px;
+            //         height: 15px;
+            //         -moz-border-radius: 7.5px;
+            //         -webkit-border-radius: 7.5px;
+            //         border-radius: 7.5px;
+            //         background-color: $yellowColor;
+            //     }
+            // }
+        }
+    }
+}

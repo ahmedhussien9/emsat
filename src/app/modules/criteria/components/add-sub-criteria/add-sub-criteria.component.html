@@ -1,0 +1,27 @@
+<section class="dialog">
+    <div class="dialog__header">
+        <div class="dialog__header__title">
+            <h3>Add Sub Criteria</h3>
+        </div>
+        <div class="dialog__header__closeDialog">
+            <a (click)="closeDialog()">
+                <mat-icon>clear</mat-icon>
+            </a>
+        </div>
+    </div>
+    <form [formGroup]="formGroup">
+        <div class="form-group">
+            <div class="label">
+                Name
+            </div>
+            <input type="text" formControlName="name" class="form-control">
+        </div>
+        <div class="submit-btn">
+            <app-submit-btn [loading]="loading" [title]="'save' | translate" class="authButton"
+                (isClickedEvent)="submit()">
+            </app-submit-btn>
+        </div>
+    </form>
+
+
+</section>

@@ -1,0 +1,97 @@
+<mat-sidenav-container class="sidenav-container" fullscreen>
+  <!-- Side Navbar -->
+  <mat-sidenav #sidenav class="sidenav" [style.width.em]="18" [position]="position" [mode]="sidebarStatus"
+    [opened]="sideNavbar$ | async">
+    <!-- Header  -->
+    <div class="sidenav__header">
+      <!-- <ul>
+        <li class="lang-link">
+          <a (click)="switchLang()">{{ lang }}</a>
+        </li>
+        <span class="divider"></span>
+        <li class="logout-link">
+          <a>{{ "logout" | translate }}</a>
+        </li>
+      </ul> -->
+      <img src="assets/images/moe-logo-en.png" alt="logo" />
+    </div>
+    <!-- Links -->
+    <mat-nav-list class="sidenav__links">
+      <ng-container *ngFor="let link of links; let i = index">
+        <!-- Parent Link  -->
+        <ng-container *ngIf="authService.isAuthorized(link.roles)">
+          <mat-list-item class="sidenav__links__parent" [ngStyle]="{
+            margin: link.isExpand && link.children ? '' : '10px 0'
+          }" (click)="expandChildLink(i, link)">
+            <i class="icon" [class]="link.icon"></i>
+            <span>{{ link | translateApi: "nameDictionary" }}</span>
+          </mat-list-item>
+
+          <!-- children Links  -->
+          <div class="children" [ngClass]="{ expanded: link.isExpand }" *ngIf="link.isExpand && link.children">
+            <a mat-list-item *ngFor="let child of link.children" [routerLink]="[child.route]"
+              routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+              <!-- <i [class]="subLinksIcon"></i> -->
+              {{
+              child | translateApi: "nameDictionary" }}
+            </a>
+          </div>
+        </ng-container>
+
+      </ng-container>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <mat-toolbar class="sidenav-content-toolbar">
+      <ng-container *ngIf="!(sideNavbar$ | async)">
+        <button mat-icon-button class="menu-button" (click)="open()" type="button" aria-label="Toggle sidenav">
+          <i class="material-icons" style="color: #ffd32a; font-size: 30px">menu</i>
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="sideNavbar$ | async">
+        <button mat-icon-button class="menu-button" (click)="close()" type="button" aria-label="Toggle sidenav">
+          <i class="material-icons" style="color: #ffd32a; font-size: 30px">close</i>
+        </button>
+      </ng-container>
+      <span class="example-spacer" style="flex: 1 1 auto"></span>
+      <!-- <p style="font-size: 12px;"><span style="color: #ffd32a; text-transform: uppercase;">{{'welcome' |
+          translate}} </span> <span style="color: #fff">{{userName}}</span></p> -->
+      <div class="menu-user">
+        <div class="item">
+          <a aria-haspopup="true"><strong>{{name}}</strong></a>
+          <div class="dropdown" aria-label="submenu">
+            <div class="icon-wrapper">
+              <i class="material-icons " style="font-size: 40px;line-height: 65px;">person</i>
+            </div>
+            <div class="user-info">
+              <h6><strong>Ahmed Khattab</strong></h6>
+              <small>User Id: 565655</small>
+              <small><strong>Blackstoneeit</strong></small>
+            </div>
+
+            <div class="user-settings">
+              <button class="btn">My Account</button>
+              <button class="btn" (click)="logout()">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <ul class="menu">
+        <li class="item"><a aria-haspopup="true">Ahmed Khattab</a>
+          <ul class="dropdown" aria-label="submenu">
+            <li><a>Sub-1</a></li>
+            <li><a>Sub-2</a></li>
+            <li><a>Sub-3</a></li>
+          </ul>
+        </li>
+      </ul> -->
+    </mat-toolbar>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

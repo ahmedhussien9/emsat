@@ -1,0 +1,21 @@
+<div class="auth-container" [ngStyle]="{'background-image': 'url(' + bgPhoto + ')'}">
+  <div class="auth-card">
+    <div class="auth-card-header">
+      <img src="./assets/images/logo.png" class="auth-card-header__logo">
+      <h1 class="auth-card-header__title">{{'verification' | translate}}
+      </h1>
+      <P class="auth-card-header__text">{{'verificationMsg' | translate}}
+      </P>
+    </div>
+    <div class="auth-card-body">
+      <ng-container>
+        <otp [setting]="settings" (onValueChange)="onInputChange($event)"></otp>
+      </ng-container>
+    </div>
+  </div>
+  <div class="auth-bg"></div>
+
+  <div class="language-container">
+    <a (click)="switchLang()">{{'languageName' | translate}}</a>
+  </div>
+</div>

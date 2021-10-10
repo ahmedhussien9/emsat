@@ -1,0 +1,14 @@
+<h5>
+    {{title}}
+</h5>
+
+<div mat-dialog-content>
+    <p>{{message}}</p>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="onDismiss()">{{'no' | translate}}</button>
+    <app-action-button (isClicked)="onConfirm()" class="dialog__configurtaions__form__submit__btn" [isBlock]="'block'"
+        [title]="'yes' | translate" [btnWidth]="'100%'" [isIcon]="false">
+    </app-action-button>
+</div>

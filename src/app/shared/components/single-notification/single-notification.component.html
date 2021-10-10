@@ -1,0 +1,15 @@
+<section class="single-notification">
+    <h6 class="single-notification__title">{{notification.label}}</h6>
+    <div class="single-notification__valueContainer">
+        <div class="single-notification__valueContainer__value">
+            {{notification.value}}
+        </div>
+    </div>
+    <div class="single-notification__footer">
+        <div class="single-notification__footer__date"></div>
+        <div class="single-notification__footer__clearNotification">
+            <a class="single-notification__footer__clearNotification__link"
+                (click)="isClicked()">{{'clear_notifications' | translate}}</a>
+        </div>
+    </div>
+</section>

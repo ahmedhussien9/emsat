@@ -1,0 +1,268 @@
+<div class="wrapper">
+    <h1 class="main-title">Generate B2C Invoice</h1>
+    <!-- <p class="page-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum distinctio nesciunt
+        doloremque neque! Molestias
+        pariatur repudiandae explicabo aut reiciendis culpa atque distinctio qui quo id. Maxime incidunt at error animi.
+    </p> -->
+    <!--Start Invoice Info Section-->
+    <section class="invoice-info">
+        <!---------------------->
+        <!--Start Invoice Form-->
+        <!---------------------->
+        <form class="invoice-info__form" [formGroup]="formGroup">
+            <!---------------------->
+            <!--Start Invoice Data-->
+            <!---------------------->
+            <div class="invoice-data">
+                <h5 class="title">Invoice Information</h5>
+                <div class="invoice-inputs">
+                    <div class="form-group">
+                        <label class="label">Invoice number</label>
+                        <input type="text" class="form-control" formControlName="irn">
+                        <small class="form-text text-danger"
+                            *ngIf="formGroup.controls['paymentMethod']?.errors?.required && isSubmitted">
+                            Invoice Number is
+                            required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethod" class="label">Payment Method</label>
+                        <select name="paymentMethod" id="paymentMethod" formControlName="paymentMethod"
+                            class="form-control" (change)="selectPaymentMethod($event)">
+                            <option *ngFor="let payMethod of paymentMethod$ | async" [value]="payMethod.id">
+                                {{payMethod.name}}
+                            </option>
+                        </select>
+                        <small class="form-text text-danger"
+                            *ngIf="formGroup.controls['paymentMethod']?.errors?.required && isSubmitted">Payment method
+                            is
+                            required
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <!--End Invoice Data-->
+
+            <section class="item-list">
+                <div class="item-list__header">
+                    <h5 class="title">Invoice Items</h5>
+                    <button type="button" class="btn" (click)="addNewProduct()">
+                        Add Product
+                    </button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Product Code</th>
+                                <th>Unit Price</th>
+                                <th>Qty</th>
+                                <th>VAT type</th>
+                                <th>Discount</th>
+                                <th>VAT percatnage</th>
+                                <th>VAT Amount</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let item of getItemsControls(); let c = index" formArrayName="items">
+                                <ng-container [formGroupName]="c">
+                                    <tr>
+                                        <td>{{c + 1}}</td>
+                                        <td>
+                                            <input type="text"
+                                                [ngClass]="{'is-inavlid' : item.controls['name']?.errors?.required && isSubmitted && item.controls['name']?.errors?.required}"
+                                                class="form-control" formControlName="name">
+                                        </td>
+                                        <td>
+                                            <input type="text"
+                                                [ngClass]="{'is-inavlid' : item.controls['description']?.errors?.required && isSubmitted}"
+                                                class="form-control" formControlName="description">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"
+                                                [ngClass]="{'is-inavlid' : item.controls['serviceCode']?.errors?.required && isSubmitted}"
+                                                formControlName="serviceCode">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control" min="1"
+                                                [ngClass]="{'is-inavlid' : item.controls['unitPrice']?.errors?.required && isSubmitted}"
+                                                formControlName="unitPrice" (keyup)="calculateSingleItem(c)">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control"
+                                                [ngClass]="{'is-inavlid' : item.controls['quantity']?.errors?.required && isSubmitted}"
+                                                formControlName="quantity" (keyup)="calculateSingleItem(c)" />
+                                        </td>
+                                        <td>
+                                            <select class="form-control" formControlName="taxCodeId"
+                                                [ngClass]="{'is-inavlid' : item.controls['taxCodeId']?.errors?.required && isSubmitted}"
+                                                [attr.disabled]="!item.controls.unitPrice.value ? true : null"
+                                                (change)="selectVatTypeChange(c)">
+                                                <option *ngFor="let vatType of vat_type$ | async" [value]="vatType.id">
+                                                    {{vatType.description}} - {{vatType.percentage}}%
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="number" min="1" style="width: 110px"
+                                                [attr.disabled]="!item.controls.unitPrice.value ? true : null"
+                                                [ngClass]="{'is-inavlid' : item.controls['ItemDiscountAmount']?.errors?.required && isSubmitted}"
+                                                formControlName="ItemDiscountAmount" (keyup)="calculateSingleItem(c)" />
+
+                                        </td>
+                                        <td> {{item.controls.vatPercentage.value}}%</td>
+                                        <td> {{item.controls.vatAmount.value | currency:'SAR '}}</td>
+                                        <td> {{item.controls.subTotalInclusiveVat.value | currency:' SAR'}} </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger deleteItem"
+                                                (click)="deleteItem(i)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="products-list-summary">
+                <ul class="list-summary">
+                    <li class="item">
+                        <div class="item__title">
+                            <p>Total items discounts :</p>
+                        </div>
+                        <div class="item__value">
+                            <p>{{invoiceSummary.totalItemsDiscounts | currency:'SAR '}}</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="item__title">
+                            <p>Total invoice discounts :</p>
+                        </div>
+                        <div class="item__value">
+                            <p>{{invoiceSummary.totalInvoiceDiscounts | currency:'SAR '}}</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="item__title">
+                            <p>Total VAT number : </p>
+                        </div>
+                        <div class="item__value">
+                            <p>{{invoiceSummary.totalVatNumber | currency:'SAR '}} </p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="item__title">
+                            <p>Total Amount : </p>
+                        </div>
+                        <div class="item__value">
+                            <p>{{invoiceSummary.totalAmount | currency:'SAR '}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <!--End Invoices Products-->
+
+            <!----------------------------->
+            <!--Start Upload Attachements-->
+            <!----------------------------->
+            <!-- <div class="dropFile-container">
+                <h5 class="title">Upload Attachements</h5>
+                <app-upload-file (filesEvent)="droppedFiles('FIRST_SAMPLE', $event)"
+                    [sampleTitle]="'Sample 1 (Mandatroy)'" [filesCount]="firstSampleFiles.length"></app-upload-file>
+                <div class="dropFile-container__header">
+                </div>
+                <ng-container *ngIf="firstSampleFiles.length > 0">
+                    <div class="dropFile-details">
+                        <div class="dropFile-details__header">
+                            <h6>First samples files</h6>
+                        </div>
+                        <div *ngFor="let item of firstSampleFiles; let i=index" class="files-container">
+                            <app-upload-file-details [file]="item" (deleteFile)="deleteFile('FIRST_SAMPLE', i)"
+                                [number]="i + 1">
+                            </app-upload-file-details>
+                        </div>
+                    </div>
+                </ng-container>
+            </div> -->
+            <!--End Upload Attachments-->
+
+            <!-------------------------->
+            <!--Start Attachements URL-->
+            <!-------------------------->
+            <!-- <div class="attachementUrl-container">
+                <div class="attachementUrl-container__header">
+                    <h5 class="title">Attachements URL</h5>
+                    <button type="button" class="btn" (click)="addNewUrlAttachements()">
+                        Add Attachement
+                    </button>
+                </div>
+                <div class="inputs-container">
+                    <div *ngFor="let phone of getAttachement(); let j = index" formArrayName="attachementsUrl">
+                        <div formGroupName="{{j}}">
+                            <div class="form-group">
+                                <label for="name" class="label">Name</label>
+                                <input type="text" class="form-control" formControlName="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="label">URL</label>
+                                <input type="text" class="form-control" formControlName="url">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+            <!--END attachements URL-->
+
+            <!------------------------>
+            <!--Start Notes Section -->
+            <!------------------------>
+            <section class="invoice-notes">
+                <div class="form-group">
+                    <label for="" class="label">Notes</label>
+                    <textarea name="" id="" cols="40" rows="8" formControlName="notes" style="height:100%;"
+                        class="form-control"></textarea>
+                    <small class="form-text text-danger"
+                        *ngIf="formGroup.controls['notes']?.errors?.required && isSubmitted">Notes
+                        is
+                        required
+                    </small>
+                </div>
+            </section>
+            <!--End Notes Section-->
+            <!------------------------------------>
+            <!--Start Terms & Condition section -->
+            <!------------------------------------->
+            <section class="invoice-termsAndConditions">
+                <h5 class="title">Terms & Conditions</h5>
+                <ul class="list">
+                    <li class="item">
+                        1. Payment Terms: Cash/Checque 100% advance payment
+                    </li>
+                    <li class="item"> 2. Validity of quotation: three weeks</li>
+                    <li class="item"> 3. In
+                        case of delay for any reason at site, it will be charged 800 / per day</li>
+                </ul>
+            </section>
+            <!--End Terms & Condition section -->
+
+
+            <div class="submit-invoice">
+
+                <app-submit-btn [loading]="loading" [title]="'Save Invoice' | translate"
+                    (isClickedEvent)="submitInvoice()">
+                </app-submit-btn>
+            </div>
+        </form>
+        <!--End Invoice Form-->
+    </section>
+    <!--End Invoice Info Section-->
+</div>

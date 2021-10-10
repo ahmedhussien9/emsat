@@ -1,0 +1,41 @@
+@import "~src/assets/scss/variables.scss";
+:host {
+  .btn {
+    color: $darkGray;
+    background-color: $lightGray;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    i {
+      padding-left: 10px;
+      position: relative;
+      [dir="rtl"] & {
+        padding-right: 10px;
+        padding-left: initial;
+      }
+    }
+    &:hover {
+      background: $properColor;
+      color: $whiteColor;
+    }
+    &:nth-of-type(1) {
+      margin-right: 1rem;
+      [dir="rtl"] & {
+        margin-left: 1rem;
+        margin-right: initial;
+      }
+    }
+  }
+
+  .active {
+    background: $properColor;
+    color: $whiteColor;
+  }
+  @media screen and(max-width: 770px) {
+    .btn {
+      min-width: auto !important;
+    }
+  }
+}

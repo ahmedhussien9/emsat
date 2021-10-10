@@ -1,0 +1,27 @@
+@import "~src/assets/scss/variables.scss";
+
+:host {
+    .searchContainer {
+        position: relative;
+        i {
+            position: absolute;
+            top: 25%;
+            right: 15px;
+            color: yellowgreen;
+            font-size: 25px;
+            z-index: 999;
+            [dir="rtl"] & {
+                text-align: right;
+                right: initial;
+                left: 15px;
+            }
+        }
+        .round-input {
+            padding-right: 3rem;
+            [dir="rtl"] & {
+                padding-left: 3rem;
+                padding-right: 1.8rem;
+            }
+        }
+    }
+}

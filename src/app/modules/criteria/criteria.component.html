@@ -1,0 +1,108 @@
+<div class="wrapper">
+    <div class="wrapper__header">
+        <h1 class="main-title">Criteria List</h1>
+        <button class="btn action" (click)="addCriteria()">Add</button>
+    </div>
+    <ng-container *ngIf="loading">
+        <app-loader></app-loader>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+        <div class="tabelContainer">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click)="selectCriteria(criteria)"
+                        *ngFor="let criteria of criterias | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }; let i = index"
+                        style="cursor: pointer">
+                        <td>{{i + 1}}</td>
+                        <td>{{ criteria.name}}</td>
+                        <td>{{ criteria.created_at | date: "medium"}}</td>
+                        <td>{{ criteria.updated_at | date: "medium"}}</td>
+                        <td> <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="editCriteria(criteria)">
+                                    <mat-icon>edit</mat-icon>
+                                    <span>{{ "edit" | translate }}</span>
+                                </button>
+                                <button mat-menu-item (click)="deleteCriteria(criteria)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>{{ "delete" | translate }}</span>
+                                </button>
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls [previousLabel]="'Preview' | translate" [nextLabel]="'Next' | translate"
+            (pageChange)="getPage($event)">
+        </pagination-controls>
+    </ng-container>
+
+
+
+    <div class="wrapper__header">
+        <h1 class="main-title">Sub Criteria List <span style="color: #daaa96;"
+                *ngIf="selectedCriteria&& selectedCriteria.name">
+                {{selectedCriteria.name}}</span></h1>
+        <button class="btn action" (click)="addSubCriteria()"> Add</button>
+    </div>
+    <ng-container *ngIf="loadingSub">
+        <app-loader></app-loader>
+    </ng-container>
+    <ng-container *ngIf="!loadingSub">
+        <div class="tabelContainer">
+            <ng-container *ngIf="!loadingSub && subCriterias&& subCriterias.length > 0">
+                <table class="table  ">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Name</th>
+                            <th>Created At</th>
+                            <th>Updated At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let subCriteria of subCriterias | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalItems }; let i = index"
+                            style="cursor: pointer">
+                            <td>{{i + 1}}</td>
+                            <td>{{ subCriteria.name}}</td>
+                            <td>{{ subCriteria.created_at | date: "medium"}}</td>
+                            <td>{{ subCriteria.updated_at | date: "medium"}}</td>
+                            <td click-stop-propagation> <button mat-icon-button [matMenuTriggerFor]="menu">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item (click)="editSubCriteria(subCriteria)">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>{{ "edit" | translate }}</span>
+                                    </button>
+                                    <button mat-menu-item (click)="deleteSubCriteria(subCriteria)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>{{ "delete" | translate }}</span>
+                                    </button>
+                                </mat-menu>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls [previousLabel]="'Preview' | translate" [nextLabel]="'Next' | translate"
+                    (pageChange)="getPage($event)">
+                </pagination-controls>
+            </ng-container>
+        </div>
+
+    </ng-container>
+
+</div>

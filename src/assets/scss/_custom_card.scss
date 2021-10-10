@@ -1,0 +1,33 @@
+@import "./variables";
+.custom-card {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 20px;
+  position: relative;
+  margin-top: 1rem;
+  min-width: 200px;
+  .float-header {
+    position: absolute;
+    top: -13px;
+    min-width: 250px;
+    color: $whiteColor;
+    padding: 0.4rem 1rem;
+    background: $lighGrayColor;
+    border-radius: 50px;
+    left: 20px;
+    [dir="rtl"] & {
+      right: 20px;
+      left: initial;
+    }
+    &__title {
+      color: $whiteColor;
+      font-size: 12px;
+      margin-bottom: 0px;
+      font-family: ArbFONTS-GE_SS_Two_Medium-1;
+    }
+  }
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 10px #0000000d;
+}

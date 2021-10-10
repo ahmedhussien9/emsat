@@ -1,0 +1,33 @@
+<div class="item custom-card " [class.box-shadow]="isBoxShadow">
+  <div class="float-header" *ngIf="title">
+    <h6 class="float-header__title">
+      {{ title }}
+    </h6>
+  </div>
+  <div class="item__body row">
+    <ng-container *ngIf="data.length > 0; else emptyTemp">
+      <div class="item__body__image col-md-3 col-sm-12">
+        <img [src]="image" class="img-fluid" />
+        <!-- <h3>{{'employees_by_academic_qualifications' | translate}}</h3> -->
+      </div>
+      <ul class="item__body__list col-md-9 col-sm-12" [ngClass]="isBorder ? 'border' : ''">
+        <ng-container *ngIf="masjedStatsticsTypes">
+          <li class="item__body__list__item">
+            <p class="value">{{ ConvertString(data[0].value) + ConvertString(data[1].value) }}</p>
+            <p class="title">عدد المساجد</p>
+          </li>
+        </ng-container>
+        <li class="item__body__list__item" *ngFor="let item of data" [@simpleFadeAnimation]="'in'">
+          <p class="value">{{ item.value }}</p>
+          <p class="title">{{ item.name }}</p>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #emptyTemp>
+  <div style="min-height: 180px; display: flex; align-items: center; justify-content: center;">
+    <app-empty-data></app-empty-data>
+  </div>
+</ng-template>

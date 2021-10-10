@@ -1,0 +1,33 @@
+<section class="page-header">
+    <section class="page-header__left">
+        <h1 class="page-header__left__title">{{title }}</h1>
+    </section>
+    <section class="page-header__right">
+        <ng-container *ngIf="allowSearch">
+            <div class="page-header__search">
+                <app-search (isSearch)="search($event)"></app-search>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="allowDatePicker">
+            <div class="page-header__right__date">
+                <app-date-picker (isDatePickerSelected)="selectDatePicker($event)"></app-date-picker>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="allowOptions">
+            <div class="page-header__right__options">
+                <app-dropdown [options]="options" (isSelectOption)="selectOption($event)"></app-dropdown>
+            </div>
+        </ng-container>
+        <ng-container *ngIf='allowAdd'>
+            <div class="page-header__right__addBtn">
+                <app-action-button (isClicked)="clickButton()" [title]="btnTitle" [icon]="icon" [btnWidth]="'100%'"
+                    [isIcon]='true'>
+                </app-action-button>
+            </div>
+            <div class="page-header__right__addBtnMob">
+                <app-mob-action-btn (isClicked)="clickButton()" [title]="btnTitle" [icon]="icon" [btnWidth]="'100%'"
+                    [isIcon]='true'></app-mob-action-btn>
+            </div>
+        </ng-container>
+    </section>
+</section>

@@ -1,0 +1,31 @@
+<section class="dialog">
+    <div class="dialog__header">
+        <div class="dialog__header__title">
+            <h3>{{title}}</h3>
+        </div>
+        <div class="dialog__header__closeDialog">
+            <a (click)="closeDialog()">
+                <mat-icon>clear</mat-icon>
+            </a>
+        </div>
+    </div>
+    <ul *ngIf="attachments.length > 0">
+        <li *ngFor="let attachment of attachments; let i = index">
+            <ng-container *ngIf="attachment.url">
+                <a [href]="attachment.url" download target="_blank">
+                    {{attachment.name}}</a>
+            </ng-container>
+            <ng-container *ngIf="!attachment.url && !attachment.criteria">
+                {{attachment.name}}
+            </ng-container>
+
+            <ng-container *ngIf="attachment.criteria">
+                {{attachment.name}}
+            </ng-container>
+        </li>
+    </ul>
+    <section class="image-container">
+        <img [src]="image">
+    </section>
+    <section></section>
+</section>

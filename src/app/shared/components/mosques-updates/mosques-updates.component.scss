@@ -1,0 +1,27 @@
+@import "~src/assets/scss/variables.scss";
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  &__image {
+    margin-top: 1rem;
+    position: relative;
+    span {
+      position: absolute;
+      left: 50%;
+      bottom: 15px;
+      transform: translate(-50%, 0px);
+      color: #35c78a;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+  &__title {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 1rem;
+    color: $properColor;
+  }
+}

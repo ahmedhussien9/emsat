@@ -1,0 +1,96 @@
+<div class="reports">
+  <div class="welcome-container">
+    <div class="user-name">
+      <h1>Good Morning, <span style="color: #5c4683">Ahmed Khattab</span></h1>
+      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae quo, sit inventore praesentium facilis esse
+        iste
+        recusandae exercitationem quibusdam, excepturi harum sapiente alias, distinctio libero ea possimus eligendi
+        dolorum molestiae.</p> -->
+    </div>
+    <div class="image">
+      <img [src]="'./assets/images/welcome-image.jpg'" class="img-fluid">
+    </div>
+  </div>
+  <div class="card-containers">
+    <div class="report-card">
+      <div class="report-card__value">
+        <h1>10</h1>
+        <p> Candidates</p>
+      </div>
+      <div class="report-card__icon">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-card__value">
+        <h1>20</h1>
+        <p> Test Centers</p>
+      </div>
+      <div class="report-card__icon">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-card__value">
+        <h1>2</h1>
+        <p>Exams</p>
+      </div>
+      <div class="report-card__icon">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-card__value">
+        <h1>2</h1>
+        <p>Applications</p>
+      </div>
+      <div class="report-card__icon">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts-container">
+    <div class="charts">
+      <div style="display: block;" class="line-chart">
+        <canvas width="900" height="300" #mychart></canvas>
+      </div>
+      <div class="bar-chart">
+        <canvas width="1000" height="400" #barChart></canvas>
+      </div>
+    </div>
+    <div class="dounts-chart">
+      <div style="display: block;">
+        <canvas #donut></canvas>
+      </div>
+
+      <div class="item-card">
+        <div class="item-card-info">
+          <h6>5</h6>
+          <p>Approved</p>
+        </div>
+        <div class="item-card-image">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="item-card-info">
+          <h6>3</h6>
+          <p>Not Approved</p>
+        </div>
+        <div class="item-card-image">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+      <div class="item-card">
+        <div class="item-card-info">
+          <h6>2</h6>
+          <p>Pending Approval</p>
+        </div>
+        <div class="item-card-image">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

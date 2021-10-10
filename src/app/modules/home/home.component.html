@@ -1,0 +1,330 @@
+<nav class="nav">
+    <ul class="nav-list">
+        <li class="nav-list__item">
+            <a (click)="scroll(about)">About </a>
+        </li>
+        <li class="nav-list__item" [class.active]="sectionsStatus.first">
+            <a (click)="scroll(clientApp)">
+                Exam Centers
+            </a>
+        </li>
+        <li class="nav-list__item">
+            <img src="./assets/images/moe-logo-en.png" height="70px" />
+        </li>
+        <li class="nav-list__item">
+            <a (click)="scroll(employeeApp)">
+                Applicants
+            </a>
+        </li>
+        <li class="nav-list__item">
+            <a (click)="scroll(employeeApp)">
+                Register
+            </a>
+        </li>
+    </ul>
+</nav>
+<header class="header">
+    <section class="about-clipper container" #about>
+        <div class="row  ">
+            <div class="col-md-9 intro">
+                <h6 class="title">The Ministry of Education </h6>
+                <h3 class="heading">
+                    The Ministry of Education Booking Exams App, is a unified management platform that helps securely
+                    store and access test administration and candidate data, allow candidates to self-register for
+                    exams, allow test centers to view and manage their information, and provide basic descriptive
+                    statistics on stored data.
+                </h3>
+            </div>
+            <!-- <div class="col-md-4 order-first order-md-2">
+          <div class="img-container">
+            <img src="./assets/images/01.png" class="img-fluid" />
+          </div>
+        </div> -->
+        </div>
+    </section>
+</header>
+
+<main class="main">
+    <section class="client-feature container" #clientApp>
+        <div class="row">
+            <div class="col-md-6 image-section">
+                <div class="app_img">
+                    <img src="./assets/images/Center.png" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Exam and Test Centers:</h2>
+                <p class="text">
+                    Through this platform test centers will be able to manage the test center information regarding test
+                    monitoring as well as follow up on materials provided by the EmSAT unit, help support during tests
+                    in logging candidates attendance and report any incident.
+                </p>
+
+                <hr />
+                <!--Start Client App feature list-->
+                <ul class="client-feature__list">
+                    <li class="client-feature__item mainColor-bg">
+                        <span class="icon">
+                            <img src="./assets/icons/verified-account.png" />
+                        </span>
+                        <div>
+                            <h6> Manage the Test Center attributes</h6>
+                        </div>
+                    </li>
+                    <li class="client-feature__item mainColor-bg">
+                        <span class="icon">
+                            <img src="./assets/icons/verified-account.png" />
+                        </span>
+                        <div>
+                            <h6> View upcoming test dates/committees test dates</h6>
+                        </div>
+                    </li>
+
+                    <li class="client-feature__item mainColor-bg client-feature__feature-3">
+                        <span class="icon">
+                            <img src="./assets/icons/verified-account.png" />
+                        </span>
+                        <div>
+                            <h6> Commit to participate in specific test dates</h6>
+                        </div>
+                    </li>
+
+                    <li class="client-feature__item mainColor-bg client-feature__feature-3">
+                        <span class="icon">
+                            <img src="./assets/icons/verified-account.png" />
+                        </span>
+                        <div>
+                            <h6> Manage registered candidates (View registered candidates and generate related reports
+                                and lists)</h6>
+                        </div>
+                    </li>
+                    <li class="client-feature__item mainColor-bg client-feature__feature-3">
+                        <span class="icon">
+                            <img src="./assets/icons/verified-account.png" />
+                        </span>
+                        <div>
+                            <h6> View/Download Emsat Administration materials</h6>
+                        </div>
+                    </li>
+                    <li class="client-feature__item mainColor-bg client-feature__feature-3">
+                        <span class="icon">
+                            <img src="./assets/icons/verified-account.png" />
+                        </span>
+                        <div>
+                            <h6> Record candidates attendance details</h6>
+                        </div>
+                    </li>
+
+                    <li class="client-feature__item mainColor-bg client-feature__feature-3">
+                        <span class="icon">
+                            <img src="./assets/icons/verified-account.png" />
+                        </span>
+                        <div>
+                            <h6> Raise incident in Service desk</h6>
+                        </div>
+                    </li>
+
+                    <!-- <li>
+        
+                        <div>
+                            <h6>-Manage registered candidates (View registered candidates and generate related reports and lists)</h6>
+                        </div>
+                        <div>
+                            <h6>-View/Download Emsat Administration materials</h6>
+                        </div>
+                    </li> -->
+                </ul>
+
+                <!-- <div class="group-btns">
+                    <a class="btn google_play_btn"
+                        href="https://play.google.com/store/apps/details?id=com.hykaya.ClipperClient" target="_blank">
+                        <img src="./assets/images/android-icon.png" />
+                        جوجل بلاى
+                    </a>
+                    <a class="btn play_store_btn" href="https://apps.apple.com/us/app/clipper-beauty/id1473916685?ls=1"
+                        target="_blank">
+                        <img src="./assets/images/ios-icon.png" />
+                        آبل أستور
+                    </a>
+                </div> -->
+                <!--End Client App feature list-->
+            </div>
+        </div>
+    </section>
+    <div class="wrapper">
+        <section class="WorkerApp-feature container" #employeeApp>
+            <div class="row">
+                <div class="col-md-6 left-side">
+                    <h2>
+                        Candidates and Applicants:
+                    </h2>
+                    <p class="text">
+                        Through the platform candidates can manage their test administration by viewing available dates
+                        and registering for the preferable ones as well as viewing all of their information related to
+                        test taking.
+                    </p>
+                    <hr />
+                    <!--Start Worker App feature list-->
+                    <ul class="WorkerApp-feature__list">
+                        <li class="WorkerApp-feature__item secondary-bg WorkerApp-feature__feature-3">
+                            <span class="icon">
+                                <img src="./assets/icons/reminder.png" />
+                            </span>
+                            <div>
+                                <h6>Register for Emsat</h6>
+                            </div>
+                        </li>
+
+                        <li class="WorkerApp-feature__item secondary-bg">
+                            <span class="icon">
+                                <img src="./assets/icons/calendar-minus.png" />
+                            </span>
+                            <div>
+                                <h6>Check test calendar and upcoming test registration</h6>
+                            </div>
+                        </li>
+
+                        <li class="WorkerApp-feature__item secondary-bg">
+                            <span class="icon">
+                                <img src="./assets/icons/double-tick.png" />
+                            </span>
+                            <div>
+                                <h6>Book and Pay for tests (cancel/change test booking)</h6>
+                            </div>
+                        </li>
+
+                        <!-- <li class="WorkerApp-feature__item secondary-bg">
+                            <span class="icon">
+                                <img src="./assets/icons/double-tick.png" />
+                            </span>
+                            <div>
+                                <h6>View/edit profile and check related info (check current test registration, check
+                                    previous scores, check emsat notifications)</h6>
+                            </div>
+                        </li> -->
+
+
+                        <li class="WorkerApp-feature__item secondary-bg">
+                            <span class="icon">
+                                <img src="./assets/icons/double-tick.png" />
+                            </span>
+                            <div>
+                                <h6>Raise incident in Service desk</h6>
+                            </div>
+                        </li>
+
+                        <li class="WorkerApp-feature__item secondary-bg">
+                            <span class="icon">
+                                <img src="./assets/icons/double-tick.png" />
+                            </span>
+                            <div>
+                                <h6>Request specific Needs accommodation</h6>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- <div class="group-btns">
+                        <a class="btn google_play_btn"
+                            href="https://play.google.com/store/apps/details?id=com.hykaya.ClipperWorker"
+                            target="_blank">
+                            <img src="./assets/images/android-icon.png" />
+                            جوجل بلاى
+                        </a>
+                        <a class="btn play_store_btn" href="https://apps.apple.com/us/app/bu-clipper/id1473737414?ls=1"
+                            target="_blank">
+                            <img src="./assets/images/ios-icon.png" />
+                            آبل أستور
+                        </a>
+                    </div> -->
+                    <!--End Worker App feature list-->
+                </div>
+                <div class="col-md-6 order-first order-md-2 image-section">
+                    <div class="app_img">
+                        <img src="./assets/images/Student.png" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="join-us container" #joinUs>
+        <header>
+            <h4 class="title-1">let's start now</h4>
+            <h4 class="title-2">Register in our booking app</h4>
+        </header>si
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="app__download shadow-xs">
+                    <div class="iconContainer">
+                        <img src="./assets/icons/user-location.png" />
+                    </div>
+                    <h5 class="heading">
+                        Exam and Test Centers:
+                    </h5>
+                    <p>
+                        If you are a test center looking to join our platform please click on the Register button. If
+                        you are already registered, kindly click on the login button provide us with your credentials
+                    </p>
+                    <div class="group-btns">
+                        <button class="btn google_play_btn" [routerLink]="['/auth', 'register-center']">
+                            Register
+                        </button>
+                        <button class="btn play_store_btn" [routerLink]="['/auth', 'login']">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="app__download shadow-ex">
+                    <div class="iconContainer">
+                        <img src="./assets/icons/find-user-male.png" />
+                    </div>
+                    <h5>
+                        Candidates and Applicants:
+                    </h5>
+                    <p>
+                        If you are a candidate looking to join our platform please click on the Register button. If you
+                        are already registered, kindly click on the login button provide us with your credentials
+                    </p>
+
+                    <div class="group-btns">
+                        <button class="btn google_play_btn" [routerLink]="['/auth', 'register-tester']">
+                            Register
+                        </button>
+                        <button class="btn play_store_btn" [routerLink]="['/auth', 'login']">
+                            Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="social_media">
+        <div class="social_icon">
+            <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
+        <div class="social_icon">
+            <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="social_icon">
+            <a href="https://www.twitter.com" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </div>
+    <div class="rights">
+        all rights reserved Ministry of education © 2021
+    </div>
+
+
+</footer>

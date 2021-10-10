@@ -1,0 +1,18 @@
+<a *ngFor="let progress of progressData; let i = index" (click)="onSelectProgressBar(progress, i)" class="link-wrapper" [@simpleFadeAnimation]="'in'">
+  <ngb-progressbar [value]="progress.value" [animated]="true">
+    <span [ngStyle]="{
+        'margin-left': lang === 'en' ? progress.value + '%' : '',
+        'margin-right': lang === 'ar' ? progress.value + '%' : ''
+      }">{{ progress.value }}%</span>
+  </ngb-progressbar>
+</a>
+<div class="progress-value" [ngStyle]="customStyle ? customStyle.align : ''">
+  <img [src]="image" class="img-fluid" [ngStyle]="customStyle ? customStyle.margin : ''" />
+  <span *ngIf="selectedProgress" [style.color]="colors[selectedIndex]"
+    style="font-size: 18px; font-family: DUBAI-MEDIUM" class="value">
+    {{ selectedProgress.value }}
+    %
+    <span style="color: #ccc; font-family: DUBAI-LIGHT; font-size: 12px">{{
+      selectedProgress.name
+      }}</span></span>
+</div>

@@ -1,0 +1,92 @@
+@import "~src/assets/scss/variables.scss";
+
+:host {
+  .page-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .breadcrumb {
+    position: relative;
+    padding-right: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      top: -30%;
+      height: 40px;
+      border-radius: 5px;
+      border-left: 4px solid $properColor;
+      [dir="rtl"] & {
+        right: 0px;
+        left: initial;
+      }
+    }
+    .breadcrumb-item {
+      font-family: ArbFONTS-GE_SS_Two_Light;
+      .breadcrumb-item-link {
+        color: $darkGray;
+        text-decoration: none;
+        font-weight: 500;
+        width: 100%;
+        white-space: nowrap;
+      }
+      &:last-child {
+        .breadcrumb-item-link {
+          color: $properColor;
+        }
+      }
+      &:nth-of-type(1) {
+        margin-left: 1rem;
+        [dir="rtl"] & {
+          margin-right: 1rem;
+          margin-left: initial;
+        }
+      }
+    }
+  }
+  .breadcrumb > .breadcrumb-item + .breadcrumb-item:before {
+    color: #ccc;
+    font-family: "Font Awesome 5 Free";
+    content: "\f054";
+    font-weight: bold;
+    [dir="rtl"] & {
+      font-family: "Font Awesome 5 Free";
+      content: "\f053";
+      float: right;
+      padding-left: 5px;
+    }
+  }
+  .card-wrap {
+    padding: 5px 15px;
+    margin: 1rem 0rem;
+    border-radius: 10px;
+    .sub-header {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      .filter-container {
+        display: flex;
+        margin-left: auto;
+        [dir="rtl"] & {
+          margin-right: auto;
+          margin-left: initial;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .card-wrap {
+    .sub-header {
+      .filter-container {
+        .filter-btn-group {
+          display: none;
+        }
+      }
+    }
+  }
+}

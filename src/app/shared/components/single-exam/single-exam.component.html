@@ -1,0 +1,63 @@
+<div class="exam">
+    <div class="isApplied" *ngIf="exam.is_applied">
+        <h6>Applied</h6>
+    </div>
+    <img [src]="exam.image.url" height="200px">
+    <div class="info">
+        <h5>{{exam.name}}</h5>
+        <p class="tag">{{exam.criteria.name}}</p>
+        <p>{{exam.description | slice:0:60}}</p>
+        <div class="exam-details-container">
+            <div class="item">
+                <div class="item-left-side">
+                    <p><strong>Date & Time:</strong></p>
+                </div>
+                <div class="item-right-side"> <a (click)="displayDutrations(exam.durations, 'Exam Durations')"
+                        class="icon-style"> <i class="far fa-calendar-alt"></i></a></div>
+
+            </div>
+            <div class="item">
+                <div class="item-left-side">
+                    <p><strong>Centers</strong></p>
+                </div>
+                <div class="item-right-side"> <a (click)="displayAttachments(exam.centers, 'Centers')"
+                        class="icon-style"> <i class="far fa-building"></i></a></div>
+            </div>
+            <div class="item">
+                <div class="item-left-side">
+                    <p><strong>Sub Criteria:</strong></p>
+                </div>
+                <div class="item-right-side"> <a (click)="displayAttachments(exam.sub_criterias, 'Sub Criteria')"
+                        class="icon-style"> <i class="fas fa-list-ol"></i></a></div>
+            </div>
+        </div>
+        <ng-container *ngIf="exam.is_applied">
+            <app-submit-btn [title]="'Edit Exam'" (isClickedEvent)="apply(exam)" class="buttons" [display]="'block'"
+                [width]="'100%'">
+            </app-submit-btn>
+        </ng-container>
+        <ng-container *ngIf="!exam.is_applied">
+            <app-submit-btn [title]="'Apply Exam'" (isClickedEvent)="apply(exam)" class="buttons" [display]="'block'"
+                [width]="'100%'">
+            </app-submit-btn>
+        </ng-container>
+        <!-- <ng-content select=".buttons"></ng-content> -->
+    </div>
+</div>
+
+
+
+<!-- <td><a (click)="displayAttachments([], exam.name ,exam.image.url)"><img *ngIf="exam.image" [src]="exam.image.url"
+            style="height: 50px; width: 50px; border-radius: 50%; object-fit: cover;"></a>
+</td>
+<td>{{exam.description}}</td>
+<td>
+    <a (click)="displayAttachments(exam.centers, 'Centers')" class="icon-style"> <i class="far fa-building"></i></a>
+</td>
+<td>
+    {{exam.criteria.name}}
+</td>
+<td>
+    <a (click)="displayAttachments(exam.sub_criterias, 'Sub Criteria')" class="icon-style"> <i
+            class="fas fa-list-ol"></i></a>
+</td> -->

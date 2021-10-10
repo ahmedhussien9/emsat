@@ -1,0 +1,18 @@
+.header-container{
+  mat-toolbar {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    img {
+      display: grid;
+      align-self: center;
+      justify-self: end;
+    }
+
+    button {
+      display: grid;
+      align-self: center;
+      justify-self: start;
+    }
+  }
+}

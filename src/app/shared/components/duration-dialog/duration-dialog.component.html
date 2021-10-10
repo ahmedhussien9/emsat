@@ -1,0 +1,34 @@
+<section class="dialog">
+    <div class="dialog__header">
+        <div class="dialog__header__title">
+            <h3>{{title}}</h3>
+        </div>
+        <div class="dialog__header__closeDialog">
+            <a (click)="closeDialog()">
+                <mat-icon>clear</mat-icon>
+            </a>
+        </div>
+    </div>
+    <div *ngIf="durations.length >0">
+        <div *ngFor="let duration of durations; let i = index" style="border: 1px solid #f1f1f1; margin: 1rem; padding: 15px; border-radius: 8px;">
+            <div style="margin-bottom: 1.2rem;">
+                <h6><strong>#{{i +1}} Date :</strong> {{duration.date}}</h6>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <h6><strong>Times</strong></h6>
+            </div>
+            <div *ngIf="duration.times.length >0">
+                <div class="duration-times" style="display: flex;" *ngFor="let time of duration.times">
+                    <div class="from" style="flex-grow: 1;">
+                        <p *ngIf="time && time.from"><strong>From : </strong>{{time.from}}</p>
+                    </div>
+                    <div class="to">
+                        <p *ngIf="time && time.to"><strong>To : </strong> {{time.to}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>

@@ -1,0 +1,96 @@
+@import "~src/assets/scss/variables.scss";
+
+:host {
+    .page-header {
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+        padding: 30px 15px;
+        &__left {
+            &__title {
+                position: relative;
+
+            }
+        }
+        &__right {
+            display: flex;
+            margin-left: auto;
+            flex-wrap: wrap;
+            [dir="rtl"] & {
+                margin-right: auto;
+                margin-left: initial;
+            }
+            &__addBtn {
+                margin-left: 20px;
+                [dir="rtl"] & {
+                    margin-right: 20px;
+                    margin-left: initial;
+                }
+            }
+
+            &__options {
+                margin-left: 20px;
+                [dir="rtl"] & {
+                    margin-right: 20px;
+                    margin-left: initial;
+                }
+            }
+        }
+        &__search {
+            margin-right: 20px;
+            input {
+                max-width: 400px;
+            }
+            [dir="rtl"] & {
+                margin-left: 20px;
+                margin-right: initial;
+            }
+        }
+    }
+    @media screen and (min-width: 798px) {
+        .page-header {
+            &__right {
+                &__addBtnMob {
+                    display: none;
+                }
+            }
+
+        }
+    }
+    @media screen and (max-width: 798px) {
+        .page-header {
+            &__right {
+                flex-wrap: wrap;
+
+                div {
+                    margin: 5px 0px;
+                }
+                &__addBtnMob {
+                    display: block;
+                }
+                &__addBtn {
+                    display: none;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .page-header {
+                padding: 20px 10px;
+            &__right {
+                display: block;
+                width: 100%;
+            }
+            &__left {
+                &__title {
+                    margin: 0.5em 0px;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep .page-header__right__date .mat-form-field-flex {
+    border-radius: 50px !important;
+}

@@ -1,0 +1,65 @@
+@import "~src/assets/scss/variables.scss";
+
+.center {
+    margin: 2rem 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .drop-area {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+        background: #fff;
+        border-radius: $borderRadius !important;
+        width: 100%;
+    }
+}
+::ng-deep {
+    .ngx-file-drop {
+        &__content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 700px;
+            .icon {
+                color: #1b9cfc;
+                font-size: 50px;
+                margin: 0rem 0rem 0rem 0rem;
+            }
+            .title {
+                font-size: 18px;
+                font-weight: bold;
+                color: #000;
+                a {
+                    font-weight: bold;
+                    color: $mainColor;
+                    cursor: pointer;
+                    &:hover {
+                        color: $mainColor;
+                    }
+                }
+            }
+            .count {
+                font-size: 12px;
+                color: #000;
+            }
+            .upload-button {
+            }
+        }
+
+        &__drop-zone {
+            border: 2px dotted #5c4683 !important;
+            padding: 20px;
+            border-radius: 8px !important;
+            height: 160px !important;
+            /* background: #faf7e8; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+    }
+}
+.hasFiles {
+    background-color: #f8f9d2 !important;
+    background-image: linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%) !important;
+}

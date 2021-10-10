@@ -1,0 +1,15 @@
+@import "~src/assets/scss/variables.scss";
+.wrapper {
+  padding: 2rem 2rem;
+  background: $whiteColor;
+  min-height: 100vh;
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+}
+app-single-exam {
+  .buttons {
+    margin-top: 1.5rem;
+  }
+}

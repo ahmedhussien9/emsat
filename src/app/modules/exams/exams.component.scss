@@ -1,0 +1,89 @@
+@import "~src/assets/scss/variables.scss";
+@import "~src/assets/scss/table.scss";
+.btn {
+    background: $mainColor;
+    color: #fff;
+}
+.wrapper {
+    padding: 2rem 2rem;
+    background: $whiteColor;
+    min-height: 100vh;
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.filter-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 2rem;
+    .form-group {
+        flex-grow: 1;
+        .input-wrapper {
+            position: relative;
+            input {
+                text-indent: 28px !important;
+                padding-right: 25px;
+                [dir="rtl"] & {
+                    padding-right: 8px !important;
+                }
+            }
+            object {
+                height: 18px;
+                position: absolute;
+                top: 13px;
+                left: 16px;
+                [dir="rtl"] & {
+                    right: 16px;
+                    left: initial;
+                }
+            }
+        }
+    }
+
+    .apply-filter {
+        flex-grow: 1;
+        button {
+            width: 100%;
+            background: #f1f1f1;
+            color: #000;
+            height: 45px;
+            font-weight: bold;
+        }
+    }
+}
+.tabelContainer {
+    margin: 3rem 0rem;
+}
+table {
+    thead {
+        height: 50px;
+        line-height: 50px;
+        background-color: #f8f9fb;
+        color: $lightDark;
+        text-transform: capitalize;
+        font-weight: 700;
+        border-radius: 5px;
+        th {
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            color: #464e5f;
+            text-align: center;
+        }
+    }
+    tbody {
+        td {
+            vertical-align: middle;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #000;
+            text-align: center;
+        }
+    }
+}
+.container {
+    background-color: #fff;
+}
